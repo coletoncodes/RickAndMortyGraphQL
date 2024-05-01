@@ -232,6 +232,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		267DAC2D2BE2DECA00D0901A /* Fetch Rick & Morty Scheme & Generate Code */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -246,7 +247,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Navigate to the project root directory where the CLI tool is located\ncd \"${SRCROOT}\"\n\n# Fetch the scheme\n./apollo-ios-cli fetch-scheme\n\n# Generate the code to the local swift package.\n./apollo-ios-cli generate\n";
+			shellScript = "# Navigate to the project root directory where the CLI tool is located\ncd \"${SRCROOT}\"\n\necho \"Fetching scheme\"\n# Fetch the scheme\n./apollo-ios-cli fetch-scheme\n\necho \"Generating code\"\n# Generate the code to the local swift package.\n./apollo-ios-cli generate\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
