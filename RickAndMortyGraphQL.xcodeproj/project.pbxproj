@@ -155,6 +155,7 @@
 				26C34A1B2BE297FF0070A6C3 /* Sources */,
 				26C34A1C2BE297FF0070A6C3 /* Frameworks */,
 				26C34A1D2BE297FF0070A6C3 /* Resources */,
+				267DAC2D2BE2DECA00D0901A /* Fetch Rick & Morty Scheme & Generate Code */,
 				26C638842BE29DF800C740CC /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -228,6 +229,27 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		267DAC2D2BE2DECA00D0901A /* Fetch Rick & Morty Scheme & Generate Code */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Fetch Rick & Morty Scheme & Generate Code";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Navigate to the project root directory where the CLI tool is located\ncd \"${SRCROOT}\"\n\n# Fetch the scheme\n./apollo-ios-cli fetch-scheme\n\n# Generate the code to the local swift package.\n./apollo-ios-cli generate\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		26C34A1B2BE297FF0070A6C3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -279,7 +301,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -342,7 +364,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
