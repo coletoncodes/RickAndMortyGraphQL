@@ -43,7 +43,7 @@ If building fails initially, it is likely due to the apolla CLI tool not being i
 
 For information regarding this, please refer to the [Apollo Documentation](https://www.apollographql.com/docs/ios/get-started)
 
-![Install Apolla CLI](https://github.com/coletoncodes/RickAndMortyGraphQL/blob/master/RickAndMortyGraphQL/install-apollo-xcode-plugin.png)
+![Install Apolla CLI](https://github.com/coletoncodes/RickAndMortyGraphQL/blob/master/RickAndMortyGraphQL/install-apollo-xcode-plugin.png?raw=true)
 
 ## GraphQL Code Generation
 
