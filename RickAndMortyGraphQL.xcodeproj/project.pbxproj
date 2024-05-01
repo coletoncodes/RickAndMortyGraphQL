@@ -247,7 +247,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Navigate to the project root directory where the CLI tool is located\ncd \"${SRCROOT}\"\n\necho \"Fetching scheme\"\n# Fetch the scheme\n./apollo-ios-cli fetch-scheme\n\necho \"Generating code\"\n# Generate the code to the local swift package.\n./apollo-ios-cli generate\n";
+			shellScript = "# Navigate to the project root directory where the CLI tool is located\ncd \"${SRCROOT}\"\n\necho \"Fetching schema\"\n# Fetch the scheme\n./apollo-ios-cli fetch-schema\n\necho \"Generating code\"\n# Generate the code to the local swift package.\n./apollo-ios-cli generate\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
