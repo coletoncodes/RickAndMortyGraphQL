@@ -1,0 +1,23 @@
+query GetAllEpisodes {
+  episodes {
+    info {
+      count
+      pages
+      next
+      prev
+    }
+    results {
+      id
+      name
+      air_date
+      episode
+      created
+      characters {
+        id
+        name
+        image
+      }
+    }
+  }
+}
+

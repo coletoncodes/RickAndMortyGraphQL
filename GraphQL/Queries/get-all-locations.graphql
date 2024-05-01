@@ -1,0 +1,23 @@
+query GetAllLocations {
+  locations {
+    info {
+      count
+      pages
+      next
+      prev
+    }
+    results {
+      id
+      name
+      type
+      dimension
+      created
+      residents {
+        id
+        name
+        image
+      }
+    }
+  }
+}
+

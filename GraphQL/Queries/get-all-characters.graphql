@@ -1,0 +1,34 @@
+query GetAllCharacters {
+  characters {
+    info {
+      count
+      pages
+      next
+      prev
+    }
+    results {
+      id
+      name
+      species
+      image
+      status
+      gender
+      type
+      created
+      location {
+        id
+        name
+      }
+      origin {
+        id
+        name
+      }
+      episode {
+        id
+        name
+        air_date
+      }
+    }
+  }
+}
+
