@@ -22,12 +22,12 @@
 		267DAC3A2BE2E81800D0901A /* CCLogging in Frameworks */ = {isa = PBXBuildFile; productRef = 267DAC392BE2E81800D0901A /* CCLogging */; };
 		267DAC3D2BE2E82A00D0901A /* log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267DAC3C2BE2E82A00D0901A /* log.swift */; };
 		267DAC402BE2E89C00D0901A /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 267DAC3F2BE2E89C00D0901A /* Factory */; };
+		267DAC432BE30A4600D0901A /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267DAC422BE30A4600D0901A /* Container.swift */; };
 		26C34A232BE297FF0070A6C3 /* RickAndMortyGraphQLApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C34A222BE297FF0070A6C3 /* RickAndMortyGraphQLApp.swift */; };
 		26C34A252BE297FF0070A6C3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C34A242BE297FF0070A6C3 /* ContentView.swift */; };
 		26C34A272BE298010070A6C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26C34A262BE298010070A6C3 /* Assets.xcassets */; };
 		26C34A2A2BE298010070A6C3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26C34A292BE298010070A6C3 /* Preview Assets.xcassets */; };
 		26C34A4E2BE299600070A6C3 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 26C34A4D2BE299600070A6C3 /* Apollo */; };
-		26C638732BE29B0400C740CC /* ApolloNetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C638722BE29B0400C740CC /* ApolloNetworkHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -55,12 +55,13 @@
 		267DAC342BE2E7A100D0901A /* ViewFoundation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewFoundation.swift; sourceTree = "<group>"; };
 		267DAC352BE2E7A100D0901A /* Navigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		267DAC3C2BE2E82A00D0901A /* log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = log.swift; sourceTree = "<group>"; };
+		267DAC422BE30A4600D0901A /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
+		267DAC442BE30A9100D0901A /* fetch-and-generate-schema.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "fetch-and-generate-schema.sh"; sourceTree = "<group>"; };
 		26C34A1F2BE297FF0070A6C3 /* RickAndMortyGraphQL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMortyGraphQL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26C34A222BE297FF0070A6C3 /* RickAndMortyGraphQLApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMortyGraphQLApp.swift; sourceTree = "<group>"; };
 		26C34A242BE297FF0070A6C3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		26C34A262BE298010070A6C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		26C34A292BE298010070A6C3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		26C638722BE29B0400C740CC /* ApolloNetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApolloNetworkHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +126,14 @@
 			path = Logging;
 			sourceTree = "<group>";
 		};
+		267DAC412BE30A3A00D0901A /* DIContainer */ = {
+			isa = PBXGroup;
+			children = (
+				267DAC422BE30A4600D0901A /* Container.swift */,
+			);
+			path = DIContainer;
+			sourceTree = "<group>";
+		};
 		26C34A162BE297FF0070A6C3 = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +156,7 @@
 		26C34A212BE297FF0070A6C3 /* RickAndMortyGraphQL */ = {
 			isa = PBXGroup;
 			children = (
+				267DAC412BE30A3A00D0901A /* DIContainer */,
 				267DAC3B2BE2E82200D0901A /* Logging */,
 				267DAC322BE2E76800D0901A /* UI */,
 				26C34A222BE297FF0070A6C3 /* RickAndMortyGraphQLApp.swift */,
@@ -170,7 +180,7 @@
 			children = (
 				266078C12BE2C71A003250FD /* Schema */,
 				266078A62BE2C5CA003250FD /* Queries */,
-				26C638722BE29B0400C740CC /* ApolloNetworkHelper.swift */,
+				267DAC442BE30A9100D0901A /* fetch-and-generate-schema.sh */,
 			);
 			path = GraphQL;
 			sourceTree = "<group>";
@@ -192,7 +202,7 @@
 				26C34A1B2BE297FF0070A6C3 /* Sources */,
 				26C34A1C2BE297FF0070A6C3 /* Frameworks */,
 				26C34A1D2BE297FF0070A6C3 /* Resources */,
-				267DAC2D2BE2DECA00D0901A /* Fetch Rick & Morty Scheme & Generate Code */,
+				267DAC2D2BE2DECA00D0901A /* Fetch Rick & Morty Schema & Generate Code */,
 				26C638842BE29DF800C740CC /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -271,7 +281,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		267DAC2D2BE2DECA00D0901A /* Fetch Rick & Morty Scheme & Generate Code */ = {
+		267DAC2D2BE2DECA00D0901A /* Fetch Rick & Morty Schema & Generate Code */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -281,14 +291,14 @@
 			);
 			inputPaths = (
 			);
-			name = "Fetch Rick & Morty Scheme & Generate Code";
+			name = "Fetch Rick & Morty Schema & Generate Code";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Navigate to the project root directory where the CLI tool is located\ncd \"${SRCROOT}\"\n\necho \"Fetching schema\"\n# Fetch the scheme\n./apollo-ios-cli fetch-schema\n\necho \"Generating code\"\n# Generate the code to the local swift package.\n./apollo-ios-cli generate\n";
+			shellScript = "# Navigate to the project root directory where the CLI tool is located\nsh \"${SRCROOT}/GraphQL/fetch-and-generate-schema.sh\"\n\n#echo \"Fetching schema\"\n# Fetch the scheme\n#./apollo-ios-cli fetch-schema\n\n#echo \"Generating code\"\n# Generate the code to the local swift package.\n#./apollo-ios-cli generate\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -300,7 +310,7 @@
 				26C34A252BE297FF0070A6C3 /* ContentView.swift in Sources */,
 				267DAC372BE2E7A100D0901A /* Navigator.swift in Sources */,
 				267DAC362BE2E7A100D0901A /* ViewFoundation.swift in Sources */,
-				26C638732BE29B0400C740CC /* ApolloNetworkHelper.swift in Sources */,
+				267DAC432BE30A4600D0901A /* Container.swift in Sources */,
 				267DAC3D2BE2E82A00D0901A /* log.swift in Sources */,
 				26C34A232BE297FF0070A6C3 /* RickAndMortyGraphQLApp.swift in Sources */,
 			);
