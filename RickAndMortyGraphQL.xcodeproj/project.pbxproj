@@ -21,6 +21,7 @@
 		267DAC372BE2E7A100D0901A /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267DAC352BE2E7A100D0901A /* Navigator.swift */; };
 		267DAC3A2BE2E81800D0901A /* CCLogging in Frameworks */ = {isa = PBXBuildFile; productRef = 267DAC392BE2E81800D0901A /* CCLogging */; };
 		267DAC3D2BE2E82A00D0901A /* log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267DAC3C2BE2E82A00D0901A /* log.swift */; };
+		267DAC402BE2E89C00D0901A /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 267DAC3F2BE2E89C00D0901A /* Factory */; };
 		26C34A232BE297FF0070A6C3 /* RickAndMortyGraphQLApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C34A222BE297FF0070A6C3 /* RickAndMortyGraphQLApp.swift */; };
 		26C34A252BE297FF0070A6C3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C34A242BE297FF0070A6C3 /* ContentView.swift */; };
 		26C34A272BE298010070A6C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26C34A262BE298010070A6C3 /* Assets.xcassets */; };
@@ -68,6 +69,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				266078FC2BE2DCC5003250FD /* RickAndMortyAPI in Frameworks */,
+				267DAC402BE2E89C00D0901A /* Factory in Frameworks */,
 				26C34A4E2BE299600070A6C3 /* Apollo in Frameworks */,
 				267DAC3A2BE2E81800D0901A /* CCLogging in Frameworks */,
 				266078FE2BE2DCC5003250FD /* RickAndMortyAPITestMocks in Frameworks */,
@@ -203,6 +205,7 @@
 				266078FB2BE2DCC5003250FD /* RickAndMortyAPI */,
 				266078FD2BE2DCC5003250FD /* RickAndMortyAPITestMocks */,
 				267DAC392BE2E81800D0901A /* CCLogging */,
+				267DAC3F2BE2E89C00D0901A /* Factory */,
 			);
 			productName = RickAndMortyGraphQL;
 			productReference = 26C34A1F2BE297FF0070A6C3 /* RickAndMortyGraphQL.app */;
@@ -236,6 +239,7 @@
 				26C34A4C2BE299600070A6C3 /* XCRemoteSwiftPackageReference "apollo-ios" */,
 				266078FA2BE2DCC5003250FD /* XCLocalSwiftPackageReference "generated/RickAndMortyAPI" */,
 				267DAC382BE2E81800D0901A /* XCRemoteSwiftPackageReference "CCLogging" */,
+				267DAC3E2BE2E89C00D0901A /* XCRemoteSwiftPackageReference "Factory" */,
 			);
 			productRefGroup = 26C34A202BE297FF0070A6C3 /* Products */;
 			projectDirPath = "";
@@ -525,16 +529,24 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:coletoncodes/CCLogging.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.2;
+				kind = exactVersion;
+				version = 0.0.2;
+			};
+		};
+		267DAC3E2BE2E89C00D0901A /* XCRemoteSwiftPackageReference "Factory" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:hmlongco/Factory.git";
+			requirement = {
+				kind = exactVersion;
+				version = 2.3.2;
 			};
 		};
 		26C34A4C2BE299600070A6C3 /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apollographql/apollo-ios.git";
 			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 1.10.0;
+				kind = exactVersion;
+				version = 1.10.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -552,6 +564,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 267DAC382BE2E81800D0901A /* XCRemoteSwiftPackageReference "CCLogging" */;
 			productName = CCLogging;
+		};
+		267DAC3F2BE2E89C00D0901A /* Factory */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 267DAC3E2BE2E89C00D0901A /* XCRemoteSwiftPackageReference "Factory" */;
+			productName = Factory;
 		};
 		26C34A4D2BE299600070A6C3 /* Apollo */ = {
 			isa = XCSwiftPackageProductDependency;
