@@ -1,5 +1,5 @@
 //
-//  CharactersNetworkRequester.swift
+//  CharactersRemoteDataSource.swift
 //  RickAndMortyGraphQL
 //
 //  Created by Coleton Gorecke on 5/1/24.
@@ -9,11 +9,11 @@ import Factory
 import Foundation
 import RickAndMortyAPI
 
-protocol CharactersNetworkRequesting {
+protocol CharactersRemoteDataSource {
     func getAllCharacters() async throws -> GetAllCharactersQuery.Data
 }
 
-final class CharactersNetworkRequester: CharactersNetworkRequesting {
+final class CharactersRemoteRepo: CharactersRemoteDataSource {
     // MARK: - Dependencies
     @Injected(\.networkingClient) private var client
     

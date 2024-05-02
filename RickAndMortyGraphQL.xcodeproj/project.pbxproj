@@ -20,16 +20,16 @@
 		267DAC402BE2E89C00D0901A /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 267DAC3F2BE2E89C00D0901A /* Factory */; };
 		267DAC432BE30A4600D0901A /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267DAC422BE30A4600D0901A /* Container.swift */; };
 		267DAC462BE30E4C00D0901A /* ApolloNetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267DAC452BE30E4C00D0901A /* ApolloNetworkClient.swift */; };
-		267DAC4A2BE3455800D0901A /* CharactersNetworkRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267DAC492BE3455800D0901A /* CharactersNetworkRequester.swift */; };
-		267DAC522BE3460400D0901A /* CharactersNetworkRequesterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267DAC512BE3460400D0901A /* CharactersNetworkRequesterTests.swift */; };
+		267DAC4A2BE3455800D0901A /* CharactersRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267DAC492BE3455800D0901A /* CharactersRemoteDataSource.swift */; };
+		267DAC522BE3460400D0901A /* CharactersRemoteRepoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267DAC512BE3460400D0901A /* CharactersRemoteRepoTests.swift */; };
 		267DAC5B2BE3465100D0901A /* RickAndMortyAPITestMocks in Frameworks */ = {isa = PBXBuildFile; productRef = 267DAC5A2BE3465100D0901A /* RickAndMortyAPITestMocks */; };
 		267DAC5E2BE3469F00D0901A /* MockInjectingTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267DAC5D2BE3469F00D0901A /* MockInjectingTestCase.swift */; };
 		267DAC602BE3485300D0901A /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267DAC5F2BE3485300D0901A /* Mocks.swift */; };
 		267DAC622BE34D2900D0901A /* ApolloTestSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 267DAC612BE34D2900D0901A /* ApolloTestSupport */; };
 		267DAC642BE34F7100D0901A /* XCTest+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267DAC632BE34F7100D0901A /* XCTest+.swift */; };
-		267DAC662BE350AB00D0901A /* EpisodesNetworkRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267DAC652BE350AB00D0901A /* EpisodesNetworkRequester.swift */; };
-		267DAC682BE3512B00D0901A /* EpisodesNetworkRequesterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267DAC672BE3512B00D0901A /* EpisodesNetworkRequesterTests.swift */; };
-		267DAC6A2BE3536400D0901A /* LocationsNetworkRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267DAC692BE3536400D0901A /* LocationsNetworkRequester.swift */; };
+		267DAC662BE350AB00D0901A /* EpisodesRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267DAC652BE350AB00D0901A /* EpisodesRemoteDataSource.swift */; };
+		267DAC682BE3512B00D0901A /* EpisodesRemoteDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267DAC672BE3512B00D0901A /* EpisodesRemoteDataSourceTests.swift */; };
+		267DAC6A2BE3536400D0901A /* LocationsRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267DAC692BE3536400D0901A /* LocationsRemoteDataSource.swift */; };
 		267DAC6C2BE3539600D0901A /* LocationsNetworkRequesterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267DAC6B2BE3539600D0901A /* LocationsNetworkRequesterTests.swift */; };
 		26C34A232BE297FF0070A6C3 /* RickAndMortyGraphQLApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C34A222BE297FF0070A6C3 /* RickAndMortyGraphQLApp.swift */; };
 		26C34A252BE297FF0070A6C3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C34A242BE297FF0070A6C3 /* ContentView.swift */; };
@@ -73,16 +73,16 @@
 		267DAC422BE30A4600D0901A /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
 		267DAC442BE30A9100D0901A /* fetch-and-generate-schema.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "fetch-and-generate-schema.sh"; sourceTree = "<group>"; };
 		267DAC452BE30E4C00D0901A /* ApolloNetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApolloNetworkClient.swift; sourceTree = "<group>"; };
-		267DAC492BE3455800D0901A /* CharactersNetworkRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersNetworkRequester.swift; sourceTree = "<group>"; };
+		267DAC492BE3455800D0901A /* CharactersRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersRemoteDataSource.swift; sourceTree = "<group>"; };
 		267DAC4F2BE3460400D0901A /* RickAndMortyGraphQLTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RickAndMortyGraphQLTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		267DAC512BE3460400D0901A /* CharactersNetworkRequesterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersNetworkRequesterTests.swift; sourceTree = "<group>"; };
+		267DAC512BE3460400D0901A /* CharactersRemoteRepoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersRemoteRepoTests.swift; sourceTree = "<group>"; };
 		267DAC582BE3462F00D0901A /* UnitTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = UnitTests.xctestplan; sourceTree = "<group>"; };
 		267DAC5D2BE3469F00D0901A /* MockInjectingTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockInjectingTestCase.swift; sourceTree = "<group>"; };
 		267DAC5F2BE3485300D0901A /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
 		267DAC632BE34F7100D0901A /* XCTest+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTest+.swift"; sourceTree = "<group>"; };
-		267DAC652BE350AB00D0901A /* EpisodesNetworkRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesNetworkRequester.swift; sourceTree = "<group>"; };
-		267DAC672BE3512B00D0901A /* EpisodesNetworkRequesterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesNetworkRequesterTests.swift; sourceTree = "<group>"; };
-		267DAC692BE3536400D0901A /* LocationsNetworkRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsNetworkRequester.swift; sourceTree = "<group>"; };
+		267DAC652BE350AB00D0901A /* EpisodesRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesRemoteDataSource.swift; sourceTree = "<group>"; };
+		267DAC672BE3512B00D0901A /* EpisodesRemoteDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesRemoteDataSourceTests.swift; sourceTree = "<group>"; };
+		267DAC692BE3536400D0901A /* LocationsRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsRemoteDataSource.swift; sourceTree = "<group>"; };
 		267DAC6B2BE3539600D0901A /* LocationsNetworkRequesterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsNetworkRequesterTests.swift; sourceTree = "<group>"; };
 		26C34A1F2BE297FF0070A6C3 /* RickAndMortyGraphQL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMortyGraphQL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26C34A222BE297FF0070A6C3 /* RickAndMortyGraphQLApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMortyGraphQLApp.swift; sourceTree = "<group>"; };
@@ -166,34 +166,34 @@
 			path = DIContainer;
 			sourceTree = "<group>";
 		};
-		267DAC472BE3453E00D0901A /* NetworkRequesters */ = {
+		267DAC472BE3453E00D0901A /* RemoteDataSources */ = {
 			isa = PBXGroup;
 			children = (
-				267DAC492BE3455800D0901A /* CharactersNetworkRequester.swift */,
-				267DAC652BE350AB00D0901A /* EpisodesNetworkRequester.swift */,
-				267DAC692BE3536400D0901A /* LocationsNetworkRequester.swift */,
+				267DAC492BE3455800D0901A /* CharactersRemoteDataSource.swift */,
+				267DAC652BE350AB00D0901A /* EpisodesRemoteDataSource.swift */,
+				267DAC692BE3536400D0901A /* LocationsRemoteDataSource.swift */,
 			);
-			path = NetworkRequesters;
+			path = RemoteDataSources;
 			sourceTree = "<group>";
 		};
 		267DAC502BE3460400D0901A /* RickAndMortyGraphQLTests */ = {
 			isa = PBXGroup;
 			children = (
 				267DAC5C2BE3468300D0901A /* Mocks */,
-				267DAC592BE3463600D0901A /* NetworkRequesterTests */,
+				267DAC592BE3463600D0901A /* RemoteDataSourceTests */,
 				267DAC632BE34F7100D0901A /* XCTest+.swift */,
 			);
 			path = RickAndMortyGraphQLTests;
 			sourceTree = "<group>";
 		};
-		267DAC592BE3463600D0901A /* NetworkRequesterTests */ = {
+		267DAC592BE3463600D0901A /* RemoteDataSourceTests */ = {
 			isa = PBXGroup;
 			children = (
-				267DAC512BE3460400D0901A /* CharactersNetworkRequesterTests.swift */,
-				267DAC672BE3512B00D0901A /* EpisodesNetworkRequesterTests.swift */,
+				267DAC512BE3460400D0901A /* CharactersRemoteRepoTests.swift */,
+				267DAC672BE3512B00D0901A /* EpisodesRemoteDataSourceTests.swift */,
 				267DAC6B2BE3539600D0901A /* LocationsNetworkRequesterTests.swift */,
 			);
-			path = NetworkRequesterTests;
+			path = RemoteDataSourceTests;
 			sourceTree = "<group>";
 		};
 		267DAC5C2BE3468300D0901A /* Mocks */ = {
@@ -230,10 +230,10 @@
 		26C34A212BE297FF0070A6C3 /* RickAndMortyGraphQL */ = {
 			isa = PBXGroup;
 			children = (
-				267DAC472BE3453E00D0901A /* NetworkRequesters */,
-				267DAC412BE30A3A00D0901A /* DIContainer */,
 				267DAC3B2BE2E82200D0901A /* Logging */,
+				267DAC412BE30A3A00D0901A /* DIContainer */,
 				267DAC322BE2E76800D0901A /* UI */,
+				267DAC472BE3453E00D0901A /* RemoteDataSources */,
 				26C34A222BE297FF0070A6C3 /* RickAndMortyGraphQLApp.swift */,
 				26C34A242BE297FF0070A6C3 /* ContentView.swift */,
 				26C34A262BE298010070A6C3 /* Assets.xcassets */,
@@ -413,11 +413,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				267DAC522BE3460400D0901A /* CharactersNetworkRequesterTests.swift in Sources */,
+				267DAC522BE3460400D0901A /* CharactersRemoteRepoTests.swift in Sources */,
 				267DAC5E2BE3469F00D0901A /* MockInjectingTestCase.swift in Sources */,
 				267DAC6C2BE3539600D0901A /* LocationsNetworkRequesterTests.swift in Sources */,
 				267DAC642BE34F7100D0901A /* XCTest+.swift in Sources */,
-				267DAC682BE3512B00D0901A /* EpisodesNetworkRequesterTests.swift in Sources */,
+				267DAC682BE3512B00D0901A /* EpisodesRemoteDataSourceTests.swift in Sources */,
 				267DAC602BE3485300D0901A /* Mocks.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -428,9 +428,9 @@
 			files = (
 				26C34A252BE297FF0070A6C3 /* ContentView.swift in Sources */,
 				267DAC372BE2E7A100D0901A /* Navigator.swift in Sources */,
-				267DAC6A2BE3536400D0901A /* LocationsNetworkRequester.swift in Sources */,
-				267DAC4A2BE3455800D0901A /* CharactersNetworkRequester.swift in Sources */,
-				267DAC662BE350AB00D0901A /* EpisodesNetworkRequester.swift in Sources */,
+				267DAC6A2BE3536400D0901A /* LocationsRemoteDataSource.swift in Sources */,
+				267DAC4A2BE3455800D0901A /* CharactersRemoteDataSource.swift in Sources */,
+				267DAC662BE350AB00D0901A /* EpisodesRemoteDataSource.swift in Sources */,
 				267DAC362BE2E7A100D0901A /* ViewFoundation.swift in Sources */,
 				267DAC432BE30A4600D0901A /* Container.swift in Sources */,
 				267DAC462BE30E4C00D0901A /* ApolloNetworkClient.swift in Sources */,

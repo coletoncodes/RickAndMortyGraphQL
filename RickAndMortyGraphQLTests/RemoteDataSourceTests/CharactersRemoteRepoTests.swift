@@ -1,5 +1,5 @@
 //
-//  CharactersNetworkRequesterTests.swift
+//  CharactersRemoteRepoTests.swift
 //  RickAndMortyGraphQLTests
 //
 //  Created by Coleton Gorecke on 5/1/24.
@@ -12,15 +12,15 @@ import RickAndMortyAPI
 import RickAndMortyAPITestMocks
 import XCTest
 
-final class CharactersNetworkRequesterTests: MockInjectingTestCase {
-    private var sut: CharactersNetworkRequester!
+final class CharactersRemoteRepoTests: MockInjectingTestCase {
+    private var sut: CharactersRemoteRepo!
     private var mockClient: MockApolloNetworkingClient!
     
     override func setUp() {
         super.setUp()
         
         mockClient = Container.shared.networkingClient() as? MockApolloNetworkingClient
-        sut = CharactersNetworkRequester()
+        sut = CharactersRemoteRepo()
     }
 
     // MARK: - Tests

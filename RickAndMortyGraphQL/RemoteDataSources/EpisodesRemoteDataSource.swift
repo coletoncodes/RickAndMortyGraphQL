@@ -1,5 +1,5 @@
 //
-//  EpisodesNetworkRequester.swift
+//  EpisodesRemoteDataSource.swift
 //  RickAndMortyGraphQL
 //
 //  Created by Coleton Gorecke on 5/1/24.
@@ -9,11 +9,11 @@ import Factory
 import Foundation
 import RickAndMortyAPI
 
-protocol EpisodesNetworkRequesting {
+protocol EpisodesRemoteDataSource {
     func getAllEpisodes() async throws -> GetAllEpisodesQuery.Data
 }
 
-final class EpisodesNetworkRequester: EpisodesNetworkRequesting {
+final class EpisodesRemoteRepo: EpisodesRemoteDataSource {
     // MARK: - Dependencies
     @Injected(\.networkingClient) private var client
     

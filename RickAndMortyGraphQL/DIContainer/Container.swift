@@ -14,18 +14,18 @@ extension Container {
             .shared
     }
     
-    var charactersNetworkRequesting: Factory<CharactersNetworkRequesting> {
-        self { CharactersNetworkRequester() as CharactersNetworkRequesting }
+    var charactersRemoteDataSource: Factory<CharactersRemoteDataSource> {
+        self { CharactersRemoteRepo() as CharactersRemoteDataSource }
             .cached
     }
     
-    var episodesNetworkRequesting: Factory<EpisodesNetworkRequesting> {
-        self { EpisodesNetworkRequester() as EpisodesNetworkRequesting }
+    var episodesRemoteDataSource: Factory<EpisodesRemoteDataSource> {
+        self { EpisodesRemoteRepo() as EpisodesRemoteDataSource }
             .cached
     }
     
-    var locationsNetworkRequesting: Factory<LocationsNetworkRequesting> {
-        self { LocationsNetworkRequester() as LocationsNetworkRequesting }
+    var locationsRemoteDataSource: Factory<LocationsRemoteDataSource> {
+        self { LocationsRemoteRepo() as LocationsRemoteDataSource }
             .cached
     }
 }

@@ -1,5 +1,5 @@
 //
-//  LocationsNetworkRequesterTests.swift
+//  LocationsRemoteDataSourceTests.swift
 //  RickAndMortyGraphQLTests
 //
 //  Created by Coleton Gorecke on 5/1/24.
@@ -12,15 +12,15 @@ import RickAndMortyAPI
 import RickAndMortyAPITestMocks
 import XCTest
 
-final class LocationsNetworkRequesterTests: MockInjectingTestCase {
-    private var sut: LocationsNetworkRequester!
+final class LocationsRemoteDataSourceTests: MockInjectingTestCase {
+    private var sut: LocationsRemoteRepo!
     private var mockClient: MockApolloNetworkingClient!
     
     override func setUp() {
         super.setUp()
         
         mockClient = Container.shared.networkingClient() as? MockApolloNetworkingClient
-        sut = LocationsNetworkRequester()
+        sut = LocationsRemoteRepo()
     }
 
     // MARK: - Tests
