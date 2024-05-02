@@ -55,7 +55,7 @@ class CharactersRootVM: ViewModel<CharactersRootViewState> {
             defer { self.state.isFetchingNextPage = false }
             do {
                 try await currentPage.fetchNextPage()
-                self.state.characters += currentPage.data
+                self.state.characters = currentPage.data
             } catch {
                 log("Failed to load next page of characters: \(error)", .error, .viewModel)
             }

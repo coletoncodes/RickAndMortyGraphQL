@@ -8,6 +8,7 @@
 import Factory
 import Foundation
 import RickAndMortyAPI
+import ApolloAPI
 
 /// A generic class that encapsulates a paginated data model
 /// and the mechanism to fetch subsequent pages.
@@ -95,6 +96,7 @@ final class CharactersRemoteRepo: CharactersRemoteDataSource {
     // MARK: - Helpers
     /// Fetches characters for the specified page and returns a `Paged` object.
     private func fetchAndCacheCharacters(for page: Int) async throws -> Paged<Character> {
+        log("Attempting to fetch characters at page: \(page)", .info, .networking)
         let query = try await client.fetch(query: CharactersQuery(page: .some(page)))
         guard let results = query.characters?.results, let pageInfo = query.characters?.info else {
             let logStr = "The results of characters or pageInfo was were nil"
@@ -118,9 +120,7 @@ final class CharactersRemoteRepo: CharactersRemoteDataSource {
             guard let self = self else {
                 throw CharacterRemoteRepoError.deallocatedSelf
             }
-            let nextPage = self.nextPage + 1
-            print("Attempting to fetch nextPage \(nextPage)")
-            return try await self.fetchAndCacheCharacters(for: self.nextPage + 1)
+            return try await self.fetchAndCacheCharacters(for: self.nextPage)
         } : nil
         
         let paged = Paged(data: characters, nextPageFetcher: nextPageFetcher)
