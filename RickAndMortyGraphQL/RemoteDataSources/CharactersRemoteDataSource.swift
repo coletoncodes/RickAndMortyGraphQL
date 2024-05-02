@@ -10,75 +10,16 @@ import Foundation
 import RickAndMortyAPI
 import ApolloAPI
 
-/// A generic class that encapsulates a paginated data model
-/// and the mechanism to fetch subsequent pages.
-/// It holds an array of data items of type `DataModel`
-/// and a closure that can asynchronously fetch the next page.
-class Paged<DataModel> {
-    /// The current page's data
-    private(set) var data: [DataModel]
-    
-    /// A closure that, when executed, will asynchronously fetch the next page of data.
-    /// This closure is `nil` if there are no more pages to fetch.
-    private var nextPageFetcher: (() async throws -> Paged<DataModel>)?
-    
-    /// Initializes a new instance of the `Paged` class with the given data
-    /// and an optional closure to fetch the next page.
-    /// - Parameters:
-    ///   - data: The current page of data as an array of `DataModel`.
-    ///   - nextPageFetcher: An optional closure that fetches the next page of data.
-    ///     It returns an instance of `Paged<DataModel>`
-    ///     or throws an error if unable to fetch the next page. Defaults to `nil`.
-    init(
-        data: [DataModel],
-        nextPageFetcher: (() async throws -> Paged<DataModel>)? = nil
-    ) {
-        self.data = data
-        self.nextPageFetcher = nextPageFetcher
-    }
-    
-    /// Updates the objects data with the results of the nextPageFetcher, if it exists.
-    /// Otherwise an error is thrown.
-    /// - Throws: An error if there is an issue fetching the next page of data,
-    ///     or no new data exists.
-    func fetchNextPage() async throws {
-        guard let nextPageFetcher = nextPageFetcher else {
-            log("No next page to fetch", .error, .persistence)
-            throw PagedError.noNextPage
-        }
-        
-        do {
-            let newPageData = try await nextPageFetcher()
-            data += newPageData.data
-            self.nextPageFetcher = newPageData.nextPageFetcher
-        } catch {
-            let errorStr = "Failed to fetch next page with error: \(error)"
-            log(errorStr, .error, .networking)
-            throw PagedError.fetchNextPageError(errorStr)
-        }
-    }
-    
-    /// Errors thrown from a ``Paged`` object.
-    enum PagedError: Error {
-        /// No next page was available
-        case noNextPage
-        /// An error occurred when attempting to fetch the next page.
-        case fetchNextPageError(String)
-    }
-}
-
 /// Fetches paginated lists of characters. It is tailored to manage and cache these character lists and their pagination data.
 protocol CharactersRemoteDataSource {
-    
     func loadInitialCharacters() async throws -> Paged<Character>
 }
 
-final class CharactersRemoteRepo: CharactersRemoteDataSource {
+actor CharactersRemoteRepo: CharactersRemoteDataSource {
     // MARK: - Dependencies
     @Injected(\.networkingClient) private var client
     
     // MARK: - Private Properties
-    private let cacheQueue = DispatchQueue(label: "com.yourapp.pagedCharactersCache")
     private var pagedCharactersCache: Paged<Character>?
     private var nextPage: Int = 1
     
@@ -116,6 +57,7 @@ final class CharactersRemoteRepo: CharactersRemoteDataSource {
         let totalPages = pageInfo.pages ?? 0
         let hasNextPage = nextPage < totalPages
         
+        // Set next page fetcher if there are more pages to fetch
         let nextPageFetcher: (() async throws -> Paged<Character>)? = hasNextPage ? { [weak self] in
             guard let self = self else {
                 throw CharacterRemoteRepoError.deallocatedSelf
@@ -124,14 +66,8 @@ final class CharactersRemoteRepo: CharactersRemoteDataSource {
         } : nil
         
         let paged = Paged(data: characters, nextPageFetcher: nextPageFetcher)
-        setCache(paged: paged)
+        pagedCharactersCache = paged
         return paged
-    }
-    
-    private func setCache(paged: Paged<Character>) {
-        cacheQueue.sync {
-            pagedCharactersCache = paged
-        }
     }
     
     enum CharacterRemoteRepoError: Error {

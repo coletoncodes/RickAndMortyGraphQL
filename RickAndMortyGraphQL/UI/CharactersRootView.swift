@@ -40,7 +40,7 @@ class CharactersRootVM: ViewModel<CharactersRootViewState> {
             do {
                 let pagedCharacters = try await charactersRemoteDataSource.loadInitialCharacters()
                 currentPage = pagedCharacters
-                self.state.characters = pagedCharacters.data
+                self.state.characters = await pagedCharacters.data
             } catch {
                 log("Failed to load initial characters: \(error)", .error, .viewModel)
             }
@@ -55,7 +55,7 @@ class CharactersRootVM: ViewModel<CharactersRootViewState> {
             defer { self.state.isFetchingNextPage = false }
             do {
                 try await currentPage.fetchNextPage()
-                self.state.characters = currentPage.data
+                self.state.characters = await currentPage.data
             } catch {
                 log("Failed to load next page of characters: \(error)", .error, .viewModel)
             }
