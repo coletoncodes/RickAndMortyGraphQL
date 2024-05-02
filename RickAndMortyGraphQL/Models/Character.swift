@@ -8,12 +8,12 @@
 import Foundation
 
 struct Character: Identifiable, Equatable {
-    let created: String
+    let createdAt: String
     let episodes: [Episode]
     let gender: String
     let id: String
-    let image: String
-    let location: Location?
+    let imageURLString: String
+    let lastKnownLocation: Location?
     let name: String
     let origin: Location?
     let species: String
@@ -21,20 +21,20 @@ struct Character: Identifiable, Equatable {
     let type: String
 }
 
-//extension Character {
-//    init(fromEntity entity: CharacterEntity) {
-//        self.init(
-//            created: entity.createdAt,
-//            episodes: <#T##[Episode]#>,
-//            gender: <#T##String#>,
-//            id: <#T##String#>,
-//            image: <#T##String#>,
-//            location: <#T##Location?#>,
-//            name: <#T##String#>,
-//            origin: <#T##Location?#>,
-//            species: <#T##String#>,
-//            status: <#T##String#>,
-//            type: <#T##String#>
-//        )
-//    }
-//}
+extension Character {
+    init(fromEntity entity: CharacterEntity) {
+        self.init(
+            createdAt: entity.createdAt,
+            episodes: [],// entity.episodes.map { $0 },
+            gender: entity.gender,
+            id: entity.id,
+            imageURLString: entity.imageURLString,
+            lastKnownLocation: entity.lastKnownLocation.map { Location(fromEntity: $0)},
+            name: entity.name,
+            origin: entity.origin.map { Location(fromEntity: $0)},
+            species: entity.species,
+            status: entity.status,
+            type: entity.type
+        )
+    }
+}

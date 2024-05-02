@@ -17,7 +17,7 @@ extension EpisodeEntity {
     }
 
     @NSManaged public var airDate: String
-    @NSManaged public var created: String
+    @NSManaged public var createdAt: String
     @NSManaged public var episodeCode: String
     @NSManaged public var id: String
     @NSManaged public var name: String

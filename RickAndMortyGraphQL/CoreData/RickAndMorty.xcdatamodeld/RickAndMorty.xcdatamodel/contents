@@ -15,7 +15,7 @@
     </entity>
     <entity name="EpisodeEntity" representedClassName="EpisodeEntity" syncable="YES">
         <attribute name="airDate" attributeType="String"/>
-        <attribute name="created" attributeType="String"/>
+        <attribute name="createdAt" attributeType="String"/>
         <attribute name="episodeCode" attributeType="String"/>
         <attribute name="id" attributeType="String"/>
         <attribute name="name" attributeType="String"/>

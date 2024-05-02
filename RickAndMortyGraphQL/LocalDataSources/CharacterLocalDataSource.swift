@@ -17,7 +17,7 @@ final class CharactersLocalDataSource {
         try await context.perform {
             for character in characters {
                 let entity = CharacterEntity(context: context)
-//                entity.populate(with: character) // Make sure you have a method to map domain model to entity
+                entity.populate(fromModel: character, in: context)
             }
             try context.save()
         }
@@ -27,7 +27,6 @@ final class CharactersLocalDataSource {
         let context = coreDataStack.viewContext
         let request: NSFetchRequest<CharacterEntity> = CharacterEntity.fetchRequest()
         let entities = try context.fetch(request)
-        return []
-//        return entities.map { Character(from: $0) } // Convert entities back to domain models
+        return entities.map { Character(fromEntity: $0) }
     }
 }
