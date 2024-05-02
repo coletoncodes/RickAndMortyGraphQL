@@ -29,6 +29,8 @@
 		267DAC642BE34F7100D0901A /* XCTest+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267DAC632BE34F7100D0901A /* XCTest+.swift */; };
 		267DAC662BE350AB00D0901A /* EpisodesNetworkRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267DAC652BE350AB00D0901A /* EpisodesNetworkRequester.swift */; };
 		267DAC682BE3512B00D0901A /* EpisodesNetworkRequesterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267DAC672BE3512B00D0901A /* EpisodesNetworkRequesterTests.swift */; };
+		267DAC6A2BE3536400D0901A /* LocationsNetworkRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267DAC692BE3536400D0901A /* LocationsNetworkRequester.swift */; };
+		267DAC6C2BE3539600D0901A /* LocationsNetworkRequesterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267DAC6B2BE3539600D0901A /* LocationsNetworkRequesterTests.swift */; };
 		26C34A232BE297FF0070A6C3 /* RickAndMortyGraphQLApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C34A222BE297FF0070A6C3 /* RickAndMortyGraphQLApp.swift */; };
 		26C34A252BE297FF0070A6C3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C34A242BE297FF0070A6C3 /* ContentView.swift */; };
 		26C34A272BE298010070A6C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26C34A262BE298010070A6C3 /* Assets.xcassets */; };
@@ -80,6 +82,8 @@
 		267DAC632BE34F7100D0901A /* XCTest+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTest+.swift"; sourceTree = "<group>"; };
 		267DAC652BE350AB00D0901A /* EpisodesNetworkRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesNetworkRequester.swift; sourceTree = "<group>"; };
 		267DAC672BE3512B00D0901A /* EpisodesNetworkRequesterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesNetworkRequesterTests.swift; sourceTree = "<group>"; };
+		267DAC692BE3536400D0901A /* LocationsNetworkRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsNetworkRequester.swift; sourceTree = "<group>"; };
+		267DAC6B2BE3539600D0901A /* LocationsNetworkRequesterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsNetworkRequesterTests.swift; sourceTree = "<group>"; };
 		26C34A1F2BE297FF0070A6C3 /* RickAndMortyGraphQL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMortyGraphQL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26C34A222BE297FF0070A6C3 /* RickAndMortyGraphQLApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMortyGraphQLApp.swift; sourceTree = "<group>"; };
 		26C34A242BE297FF0070A6C3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -167,6 +171,7 @@
 			children = (
 				267DAC492BE3455800D0901A /* CharactersNetworkRequester.swift */,
 				267DAC652BE350AB00D0901A /* EpisodesNetworkRequester.swift */,
+				267DAC692BE3536400D0901A /* LocationsNetworkRequester.swift */,
 			);
 			path = NetworkRequesters;
 			sourceTree = "<group>";
@@ -186,6 +191,7 @@
 			children = (
 				267DAC512BE3460400D0901A /* CharactersNetworkRequesterTests.swift */,
 				267DAC672BE3512B00D0901A /* EpisodesNetworkRequesterTests.swift */,
+				267DAC6B2BE3539600D0901A /* LocationsNetworkRequesterTests.swift */,
 			);
 			path = NetworkRequesterTests;
 			sourceTree = "<group>";
@@ -409,6 +415,7 @@
 			files = (
 				267DAC522BE3460400D0901A /* CharactersNetworkRequesterTests.swift in Sources */,
 				267DAC5E2BE3469F00D0901A /* MockInjectingTestCase.swift in Sources */,
+				267DAC6C2BE3539600D0901A /* LocationsNetworkRequesterTests.swift in Sources */,
 				267DAC642BE34F7100D0901A /* XCTest+.swift in Sources */,
 				267DAC682BE3512B00D0901A /* EpisodesNetworkRequesterTests.swift in Sources */,
 				267DAC602BE3485300D0901A /* Mocks.swift in Sources */,
@@ -421,6 +428,7 @@
 			files = (
 				26C34A252BE297FF0070A6C3 /* ContentView.swift in Sources */,
 				267DAC372BE2E7A100D0901A /* Navigator.swift in Sources */,
+				267DAC6A2BE3536400D0901A /* LocationsNetworkRequester.swift in Sources */,
 				267DAC4A2BE3455800D0901A /* CharactersNetworkRequester.swift in Sources */,
 				267DAC662BE350AB00D0901A /* EpisodesNetworkRequester.swift in Sources */,
 				267DAC362BE2E7A100D0901A /* ViewFoundation.swift in Sources */,
