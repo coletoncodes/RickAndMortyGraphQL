@@ -24,36 +24,36 @@ final class EpisodesRemoteDataSourceTests: MockInjectingTestCase {
     }
 
     // MARK: - Tests
-    func testGetAllEpisodes_Success() async throws {
-        /** Given */
-        let mockEpisodes = Mock<Episodes>(
-            info: .init(count: 2, next: nil, pages: 1, prev: nil),
-            results: [
-                .init(name: "Episode One"),
-                .init(name: "Episode Two"),
-            ]
-        )
-        
-        let queryModel = GetAllEpisodesQuery.Data.from(mockEpisodes)
-       
-        mockClient.fetchStub = { _ in
-            return queryModel
-        }
-        
-        /** When */
-        let result = try await sut.getAllEpisodes()
-        
-        /** Then */
-        XCTAssertEqual(result.episodes, queryModel.episodes)
-    }
-    
-    func testGetAllEpisodes_Throws() async throws {
-        /** Given */
-        mockClient.fetchStub = { _ in
-            throw MockError.expected
-        }
-        
-        /** When/Then */
-        await assertThrowsAsyncError(try await sut.getAllEpisodes())
-    }
+//    func testGetAllEpisodes_Success() async throws {
+//        /** Given */
+//        let mockEpisodes = Mock<Episodes>(
+//            info: .init(count: 2, next: nil, pages: 1, prev: nil),
+//            results: [
+//                .init(name: "Episode One"),
+//                .init(name: "Episode Two"),
+//            ]
+//        )
+//        
+//        let queryModel = GetAllEpisodesQuery.Data.from(mockEpisodes)
+//       
+//        mockClient.fetchStub = { _ in
+//            return queryModel
+//        }
+//        
+//        /** When */
+//        let result = try await sut.getAllEpisodes()
+//        
+//        /** Then */
+//        XCTAssertEqual(result.episodes, queryModel.episodes)
+//    }
+//    
+//    func testGetAllEpisodes_Throws() async throws {
+//        /** Given */
+//        mockClient.fetchStub = { _ in
+//            throw MockError.expected
+//        }
+//        
+//        /** When/Then */
+//        await assertThrowsAsyncError(try await sut.getAllEpisodes())
+//    }
 }

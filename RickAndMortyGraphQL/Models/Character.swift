@@ -8,7 +8,10 @@
 import Foundation
 
 struct Character: Identifiable, Equatable {
-    let id: String?
+    var id: String {
+        characterID.orDefault() + name
+    }
+    let characterID: String?
     let gender: String
     let imageURLString: String?
     let name: String

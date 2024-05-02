@@ -13,7 +13,7 @@ struct RickAndMortyGraphQLApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootView()
         }
     }
 }

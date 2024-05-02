@@ -84,6 +84,7 @@ final class CharactersRemoteRepo: CharactersRemoteDataSource {
     // MARK: - Interface
     /// Fetches the first page of characters and returns a `Paged` object containing the data and a fetcher for subsequent pages.
     func loadInitialCharacters() async throws -> Paged<Character> {
+        log("Fetching initial characters", .info, .networking)
         if let cache = pagedCharactersCache {
             return cache
         } else {
@@ -108,14 +109,18 @@ final class CharactersRemoteRepo: CharactersRemoteDataSource {
             return nil
         }
         
+        // Determine pages
         nextPage = pageInfo.next ?? nextPage
         let totalPages = pageInfo.pages ?? 0
+        let hasNextPage = nextPage < totalPages
         
-        let nextPageFetcher: (() async throws -> Paged<Character>)? = nextPage < totalPages ? { [weak self] in
+        let nextPageFetcher: (() async throws -> Paged<Character>)? = hasNextPage ? { [weak self] in
             guard let self = self else {
                 throw CharacterRemoteRepoError.deallocatedSelf
             }
-            return try await self.fetchAndCacheCharacters(for: nextPage)
+            let nextPage = self.nextPage + 1
+            print("Attempting to fetch nextPage \(nextPage)")
+            return try await self.fetchAndCacheCharacters(for: self.nextPage + 1)
         } : nil
         
         let paged = Paged(data: characters, nextPageFetcher: nextPageFetcher)
@@ -138,7 +143,7 @@ final class CharactersRemoteRepo: CharactersRemoteDataSource {
 extension Character {
     init(fromQueryResult result: CharactersQuery.Data.Characters.Result) {
         self.init(
-            id: result.id,
+            characterID: result.id,
             gender: result.gender.orDefault(),
             imageURLString: result.image,
             name: result.name.orDefault(),
