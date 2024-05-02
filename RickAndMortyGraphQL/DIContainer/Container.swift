@@ -9,5 +9,8 @@ import Factory
 import Foundation
 
 extension Container {
-    // TODO: - Add dependencies as needed
+    var networkingClient: Factory<ApolloNetworkingClient> {
+        self { ApolloNetworkClient() as ApolloNetworkingClient }
+            .shared
+    }
 }

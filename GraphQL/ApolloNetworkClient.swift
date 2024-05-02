@@ -23,7 +23,7 @@ protocol ApolloNetworkingClient {
 /// In this case, we only have one URL to fetch data from, so we do not need to abstract this further with URL injection, or generics.
 ///
 /// In larger scale applications, injecting the URL, using generics, or building seperate client configurations based on an enum (like an environment), may be preferred.
-final class ApolloNetworkClient {
+final class ApolloNetworkClient: ApolloNetworkingClient {
     private let client: ApolloClient
     
     /// Initializes the network client.
