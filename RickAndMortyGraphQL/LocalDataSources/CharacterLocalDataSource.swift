@@ -14,24 +14,27 @@ protocol CharacterLocalDataSource {
     func fetchCharacters() async throws -> [Character]
 }
 
+// TODO: - Impliment with new models.
 final class CharactersLocalRepo: CharacterLocalDataSource {
     @Injected(\.coreDataStack) private var coreDataStack
 
     func saveCharacters(_ characters: [Character]) async throws {
-        let context = coreDataStack.newBackgroundContext()
-        try await context.perform {
-            for character in characters {
-                let entity = CharacterEntity(context: context)
-                entity.populate(fromModel: character, in: context)
-            }
-            try context.save()
-        }
+//        let context = coreDataStack.newBackgroundContext()
+//        try await context.perform {
+//            for character in characters {
+//                let entity = CharacterEntity(context: context)
+//                entity.populate(fromModel: character, in: context)
+//            }
+//            try context.save()
+//        }
+        fatalError("Unemplemented")
     }
 
     func fetchCharacters() async throws -> [Character] {
-        let context = coreDataStack.viewContext
-        let request: NSFetchRequest<CharacterEntity> = CharacterEntity.fetchRequest()
-        let entities = try context.fetch(request)
-        return entities.map { Character(fromEntity: $0) }
+//        let context = coreDataStack.viewContext
+//        let request: NSFetchRequest<CharacterEntity> = CharacterEntity.fetchRequest()
+//        let entities = try context.fetch(request)
+//        return entities.map { Character(fromEntity: $0) }
+        fatalError("Unemplemented")
     }
 }

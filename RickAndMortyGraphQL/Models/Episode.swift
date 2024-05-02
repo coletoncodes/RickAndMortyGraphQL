@@ -15,16 +15,3 @@ struct Episode: Identifiable, Equatable {
     let id: String
     let name: String
 }
-
-extension Episode {
-    init(fromEntity entity: EpisodeEntity) {
-        self.init(
-            airDate: entity.airDate,
-            characters: (entity.characters as? Set<CharacterEntity>)?.compactMap { Character(fromEntity: $0) } ?? [],
-            createdAt: entity.createdAt,
-            episodeCode: entity.episodeCode,
-            id: entity.id,
-            name: entity.name
-        )
-    }
-}

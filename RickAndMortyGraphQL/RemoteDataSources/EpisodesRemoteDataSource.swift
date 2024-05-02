@@ -10,7 +10,7 @@ import Foundation
 import RickAndMortyAPI
 
 protocol EpisodesRemoteDataSource {
-    func getAllEpisodes() async throws -> GetAllEpisodesQuery.Data
+    func getAllEpisodes() async throws //-> GetAllEpisodesQuery.Data
 }
 
 final class EpisodesRemoteRepo: EpisodesRemoteDataSource {
@@ -18,7 +18,7 @@ final class EpisodesRemoteRepo: EpisodesRemoteDataSource {
     @Injected(\.networkingClient) private var client
     
     // MARK: - Interface
-    func getAllEpisodes() async throws -> GetAllEpisodesQuery.Data {
-        return try await client.fetch(query: GetAllEpisodesQuery())
+    func getAllEpisodes() async throws { //}-> GetAllEpisodesQuery.Data {
+//        return try await client.fetch(query: GetAllEpisodesQuery())
     }
 }
