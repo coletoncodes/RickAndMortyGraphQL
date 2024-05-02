@@ -1,5 +1,5 @@
 {
-  "originHash" : "931440278103ba39b2d835f2c346aeb873ebcb4ff41767ce2ae24e250b359dbe",
+  "originHash" : "cb177087fd04bb393de0ffaf66a019bfde299704549ac1c10934942acd833bbf",
   "pins" : [
     {
       "identity" : "apollo-ios",
@@ -8,6 +8,24 @@
       "state" : {
         "revision" : "e41cc41f8754d957cda378d81d1dc5ddac6673cb",
         "version" : "1.10.0"
+      }
+    },
+    {
+      "identity" : "cclogging",
+      "kind" : "remoteSourceControl",
+      "location" : "git@github.com:coletoncodes/CCLogging.git",
+      "state" : {
+        "revision" : "aff7f874f04e86db00857539369e340647ac7774",
+        "version" : "0.0.2"
+      }
+    },
+    {
+      "identity" : "factory",
+      "kind" : "remoteSourceControl",
+      "location" : "git@github.com:hmlongco/Factory.git",
+      "state" : {
+        "revision" : "587995f7d5cc667951d635fbf6b4252324ba0439",
+        "version" : "2.3.2"
       }
     },
     {
