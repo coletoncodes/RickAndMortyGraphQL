@@ -9,7 +9,12 @@ import Factory
 import Foundation
 import CoreData
 
-final class CharactersLocalDataSource {
+protocol CharacterLocalDataSource {
+    func saveCharacters(_ characters: [Character]) async throws
+    func fetchCharacters() async throws -> [Character]
+}
+
+final class CharactersLocalRepo: CharacterLocalDataSource {
     @Injected(\.coreDataStack) private var coreDataStack
 
     func saveCharacters(_ characters: [Character]) async throws {
