@@ -32,5 +32,8 @@ extension Container {
     var coreDataStack: Factory<CoreDataStack> {
         self { CoreDataStack.shared }
             .singleton
+            .context(.test, .preview) {
+                CoreDataStack.inMemoryStore
+            }
     }
 }
