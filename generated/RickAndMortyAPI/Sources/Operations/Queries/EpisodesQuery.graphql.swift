@@ -3,14 +3,20 @@
 
 @_exported import ApolloAPI
 
-public class GetAllEpisodesQuery: GraphQLQuery {
-  public static let operationName: String = "GetAllEpisodes"
+public class EpisodesQuery: GraphQLQuery {
+  public static let operationName: String = "Episodes"
   public static let operationDocument: ApolloAPI.OperationDocument = .init(
     definition: .init(
-      #"query GetAllEpisodes { episodes { __typename info { __typename count pages next prev } results { __typename id name air_date episode created characters { __typename id name image } } } }"#
+      #"query Episodes($page: Int) { episodes(page: $page) { __typename info { __typename count next pages prev } results { __typename air_date created episode name id } } }"#
     ))
 
-  public init() {}
+  public var page: GraphQLNullable<Int>
+
+  public init(page: GraphQLNullable<Int>) {
+    self.page = page
+  }
+
+  public var __variables: Variables? { ["page": page] }
 
   public struct Data: RickAndMortyAPI.SelectionSet {
     public let __data: DataDict
@@ -18,7 +24,7 @@ public class GetAllEpisodesQuery: GraphQLQuery {
 
     public static var __parentType: ApolloAPI.ParentType { RickAndMortyAPI.Objects.Query }
     public static var __selections: [ApolloAPI.Selection] { [
-      .field("episodes", Episodes?.self),
+      .field("episodes", Episodes?.self, arguments: ["page": .variable("page")]),
     ] }
 
     /// Get the list of all episodes
@@ -52,17 +58,17 @@ public class GetAllEpisodesQuery: GraphQLQuery {
         public static var __selections: [ApolloAPI.Selection] { [
           .field("__typename", String.self),
           .field("count", Int?.self),
-          .field("pages", Int?.self),
           .field("next", Int?.self),
+          .field("pages", Int?.self),
           .field("prev", Int?.self),
         ] }
 
         /// The length of the response.
         public var count: Int? { __data["count"] }
-        /// The amount of pages.
-        public var pages: Int? { __data["pages"] }
         /// Number of the next page (if it exists)
         public var next: Int? { __data["next"] }
+        /// The amount of pages.
+        public var pages: Int? { __data["pages"] }
         /// Number of the previous page (if it exists)
         public var prev: Int? { __data["prev"] }
       }
@@ -77,50 +83,23 @@ public class GetAllEpisodesQuery: GraphQLQuery {
         public static var __parentType: ApolloAPI.ParentType { RickAndMortyAPI.Objects.Episode }
         public static var __selections: [ApolloAPI.Selection] { [
           .field("__typename", String.self),
-          .field("id", RickAndMortyAPI.ID?.self),
-          .field("name", String?.self),
           .field("air_date", String?.self),
-          .field("episode", String?.self),
           .field("created", String?.self),
-          .field("characters", [Character?].self),
+          .field("episode", String?.self),
+          .field("name", String?.self),
+          .field("id", RickAndMortyAPI.ID?.self),
         ] }
 
-        /// The id of the episode.
-        public var id: RickAndMortyAPI.ID? { __data["id"] }
-        /// The name of the episode.
-        public var name: String? { __data["name"] }
         /// The air date of the episode.
         public var air_date: String? { __data["air_date"] }
-        /// The code of the episode.
-        public var episode: String? { __data["episode"] }
         /// Time at which the episode was created in the database.
         public var created: String? { __data["created"] }
-        /// List of characters who have been seen in the episode.
-        public var characters: [Character?] { __data["characters"] }
-
-        /// Episodes.Result.Character
-        ///
-        /// Parent Type: `Character`
-        public struct Character: RickAndMortyAPI.SelectionSet {
-          public let __data: DataDict
-          public init(_dataDict: DataDict) { __data = _dataDict }
-
-          public static var __parentType: ApolloAPI.ParentType { RickAndMortyAPI.Objects.Character }
-          public static var __selections: [ApolloAPI.Selection] { [
-            .field("__typename", String.self),
-            .field("id", RickAndMortyAPI.ID?.self),
-            .field("name", String?.self),
-            .field("image", String?.self),
-          ] }
-
-          /// The id of the character.
-          public var id: RickAndMortyAPI.ID? { __data["id"] }
-          /// The name of the character.
-          public var name: String? { __data["name"] }
-          /// Link to the character's image.
-          /// All images are 300x300px and most are medium shots or portraits since they are intended to be used as avatars.
-          public var image: String? { __data["image"] }
-        }
+        /// The code of the episode.
+        public var episode: String? { __data["episode"] }
+        /// The name of the episode.
+        public var name: String? { __data["name"] }
+        /// The id of the episode.
+        public var id: RickAndMortyAPI.ID? { __data["id"] }
       }
     }
   }

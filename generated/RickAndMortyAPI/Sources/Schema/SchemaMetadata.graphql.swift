@@ -23,13 +23,13 @@ public enum SchemaMetadata: ApolloAPI.SchemaMetadata {
   public static func objectType(forTypename typename: String) -> ApolloAPI.Object? {
     switch typename {
     case "Query": return RickAndMortyAPI.Objects.Query
-    case "Episodes": return RickAndMortyAPI.Objects.Episodes
-    case "Info": return RickAndMortyAPI.Objects.Info
-    case "Episode": return RickAndMortyAPI.Objects.Episode
-    case "Character": return RickAndMortyAPI.Objects.Character
     case "Locations": return RickAndMortyAPI.Objects.Locations
+    case "Info": return RickAndMortyAPI.Objects.Info
     case "Location": return RickAndMortyAPI.Objects.Location
+    case "Episodes": return RickAndMortyAPI.Objects.Episodes
+    case "Episode": return RickAndMortyAPI.Objects.Episode
     case "Characters": return RickAndMortyAPI.Objects.Characters
+    case "Character": return RickAndMortyAPI.Objects.Character
     default: return nil
     }
   }
