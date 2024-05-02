@@ -9,12 +9,20 @@ import CoreData
 import Foundation
 
 class CoreDataStack {
-    static let shared = CoreDataStack()
+    static let shared = CoreDataStack(inMemory: false)
+    static let inMemoryStore = CoreDataStack(inMemory: true)
+    
+    private let inMemory: Bool
 
-    private init() {}
+    private init(inMemory: Bool) {
+        self.inMemory = inMemory
+    }
 
     lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "RickAndMorty") // Ensure the model name matches your CoreData model
+        let container = NSPersistentContainer(name: "RickAndMorty")
+        if inMemory {
+                container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
+        }
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
