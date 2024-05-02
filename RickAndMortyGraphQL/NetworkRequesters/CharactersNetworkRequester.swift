@@ -9,7 +9,11 @@ import Factory
 import Foundation
 import RickAndMortyAPI
 
-final class CharactersNetworkRequester {
+protocol CharactersNetworkRequesting {
+    func getAllCharacters() async throws -> GetAllCharactersQuery.Data
+}
+
+final class CharactersNetworkRequester: CharactersNetworkRequesting {
     // MARK: - Dependencies
     @Injected(\.networkingClient) private var client
     

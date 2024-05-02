@@ -20,7 +20,7 @@ final class MockApolloNetworkingClient: ApolloNetworkingClient {
     /// Expects a ``GraphQLQuery`` type as paramater and should return ``GraphQLQuery.Data`` type. If the return can't be cast as that, a fatalError will be thrown in the method.
     var fetchStub: ((Any) async throws -> Any)!
     
-    func fetch<Query>(query: Query) async throws -> Query.Data where Query : ApolloAPI.GraphQLQuery {
+    func fetch<Query>(query: Query) async throws -> Query.Data where Query : GraphQLQuery {
         let result = try await fetchStub(query as Query)
         guard let data = result as? Query.Data else {
             fatalError("Fetch stub returned incorrect type. Expected \(type(of: Query.self)) but got \(type(of: result))")
