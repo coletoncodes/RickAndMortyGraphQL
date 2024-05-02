@@ -38,6 +38,12 @@
 		26C0D25B2BE363A100A4042E /* CharacterLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C0D25A2BE363A100A4042E /* CharacterLocalDataSource.swift */; };
 		26C0D25D2BE367A900A4042E /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C0D25C2BE367A900A4042E /* Episode.swift */; };
 		26C0D25F2BE367B500A4042E /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C0D25E2BE367B500A4042E /* Location.swift */; };
+		26C0D2732BE36B4600A4042E /* LocationEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C0D26D2BE36B4600A4042E /* LocationEntity+CoreDataClass.swift */; };
+		26C0D2742BE36B4600A4042E /* LocationEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C0D26E2BE36B4600A4042E /* LocationEntity+CoreDataProperties.swift */; };
+		26C0D2752BE36B4600A4042E /* CharacterEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C0D26F2BE36B4600A4042E /* CharacterEntity+CoreDataClass.swift */; };
+		26C0D2762BE36B4600A4042E /* CharacterEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C0D2702BE36B4600A4042E /* CharacterEntity+CoreDataProperties.swift */; };
+		26C0D2772BE36B4600A4042E /* EpisodeEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C0D2712BE36B4600A4042E /* EpisodeEntity+CoreDataClass.swift */; };
+		26C0D2782BE36B4600A4042E /* EpisodeEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C0D2722BE36B4600A4042E /* EpisodeEntity+CoreDataProperties.swift */; };
 		26C34A232BE297FF0070A6C3 /* RickAndMortyGraphQLApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C34A222BE297FF0070A6C3 /* RickAndMortyGraphQLApp.swift */; };
 		26C34A252BE297FF0070A6C3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C34A242BE297FF0070A6C3 /* ContentView.swift */; };
 		26C34A272BE298010070A6C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26C34A262BE298010070A6C3 /* Assets.xcassets */; };
@@ -98,6 +104,12 @@
 		26C0D25A2BE363A100A4042E /* CharacterLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterLocalDataSource.swift; sourceTree = "<group>"; };
 		26C0D25C2BE367A900A4042E /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
 		26C0D25E2BE367B500A4042E /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		26C0D26D2BE36B4600A4042E /* LocationEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocationEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		26C0D26E2BE36B4600A4042E /* LocationEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocationEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		26C0D26F2BE36B4600A4042E /* CharacterEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CharacterEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		26C0D2702BE36B4600A4042E /* CharacterEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CharacterEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		26C0D2712BE36B4600A4042E /* EpisodeEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EpisodeEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		26C0D2722BE36B4600A4042E /* EpisodeEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EpisodeEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		26C34A1F2BE297FF0070A6C3 /* RickAndMortyGraphQL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMortyGraphQL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26C34A222BE297FF0070A6C3 /* RickAndMortyGraphQLApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMortyGraphQLApp.swift; sourceTree = "<group>"; };
 		26C34A242BE297FF0070A6C3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -223,6 +235,7 @@
 		26C0D2112BE358BD00A4042E /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				26C0D2692BE36AE300A4042E /* Entities */,
 				26C0D2122BE358D300A4042E /* CoreDataStack.swift */,
 				26C0D2142BE358F700A4042E /* RickAndMorty.xcdatamodeld */,
 			);
@@ -254,6 +267,19 @@
 				26C0D25A2BE363A100A4042E /* CharacterLocalDataSource.swift */,
 			);
 			path = LocalDataSources;
+			sourceTree = "<group>";
+		};
+		26C0D2692BE36AE300A4042E /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				26C0D26D2BE36B4600A4042E /* LocationEntity+CoreDataClass.swift */,
+				26C0D26E2BE36B4600A4042E /* LocationEntity+CoreDataProperties.swift */,
+				26C0D26F2BE36B4600A4042E /* CharacterEntity+CoreDataClass.swift */,
+				26C0D2702BE36B4600A4042E /* CharacterEntity+CoreDataProperties.swift */,
+				26C0D2712BE36B4600A4042E /* EpisodeEntity+CoreDataClass.swift */,
+				26C0D2722BE36B4600A4042E /* EpisodeEntity+CoreDataProperties.swift */,
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 		26C34A162BE297FF0070A6C3 = {
@@ -491,6 +517,12 @@
 				267DAC432BE30A4600D0901A /* Container.swift in Sources */,
 				26C0D2192BE3599400A4042E /* AppDelegate.swift in Sources */,
 				26C0D21C2BE35B5000A4042E /* Character.swift in Sources */,
+				26C0D2732BE36B4600A4042E /* LocationEntity+CoreDataClass.swift in Sources */,
+				26C0D2742BE36B4600A4042E /* LocationEntity+CoreDataProperties.swift in Sources */,
+				26C0D2752BE36B4600A4042E /* CharacterEntity+CoreDataClass.swift in Sources */,
+				26C0D2762BE36B4600A4042E /* CharacterEntity+CoreDataProperties.swift in Sources */,
+				26C0D2772BE36B4600A4042E /* EpisodeEntity+CoreDataClass.swift in Sources */,
+				26C0D2782BE36B4600A4042E /* EpisodeEntity+CoreDataProperties.swift in Sources */,
 				26C0D2162BE358F700A4042E /* RickAndMorty.xcdatamodeld in Sources */,
 				26C0D25B2BE363A100A4042E /* CharacterLocalDataSource.swift in Sources */,
 				267DAC462BE30E4C00D0901A /* ApolloNetworkClient.swift in Sources */,

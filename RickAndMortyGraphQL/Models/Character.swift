@@ -24,14 +24,17 @@ struct Character: Identifiable, Equatable {
 //extension Character {
 //    init(fromEntity entity: CharacterEntity) {
 //        self.init(
-//            id: entity.id,
-//            name: entity.name,
-//            status: entity.status,
-//            species: entity.species,
-//            type: entity.type,
-//            gender: entity.gender,
-//            imageURLString: entity.imageURLString,
-//            createdAt: entity.created
+//            created: entity.createdAt,
+//            episodes: <#T##[Episode]#>,
+//            gender: <#T##String#>,
+//            id: <#T##String#>,
+//            image: <#T##String#>,
+//            location: <#T##Location?#>,
+//            name: <#T##String#>,
+//            origin: <#T##Location?#>,
+//            species: <#T##String#>,
+//            status: <#T##String#>,
+//            type: <#T##String#>
 //        )
 //    }
 //}
