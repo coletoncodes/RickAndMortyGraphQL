@@ -31,6 +31,8 @@
 		267DAC682BE3512B00D0901A /* EpisodesRemoteDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267DAC672BE3512B00D0901A /* EpisodesRemoteDataSourceTests.swift */; };
 		267DAC6A2BE3536400D0901A /* LocationsRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267DAC692BE3536400D0901A /* LocationsRemoteDataSource.swift */; };
 		267DAC6C2BE3539600D0901A /* LocationsNetworkRequesterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267DAC6B2BE3539600D0901A /* LocationsNetworkRequesterTests.swift */; };
+		26C0D2132BE358D300A4042E /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C0D2122BE358D300A4042E /* CoreDataStack.swift */; };
+		26C0D2162BE358F700A4042E /* RickAndMorty.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 26C0D2142BE358F700A4042E /* RickAndMorty.xcdatamodeld */; };
 		26C34A232BE297FF0070A6C3 /* RickAndMortyGraphQLApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C34A222BE297FF0070A6C3 /* RickAndMortyGraphQLApp.swift */; };
 		26C34A252BE297FF0070A6C3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C34A242BE297FF0070A6C3 /* ContentView.swift */; };
 		26C34A272BE298010070A6C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26C34A262BE298010070A6C3 /* Assets.xcassets */; };
@@ -84,6 +86,8 @@
 		267DAC672BE3512B00D0901A /* EpisodesRemoteDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesRemoteDataSourceTests.swift; sourceTree = "<group>"; };
 		267DAC692BE3536400D0901A /* LocationsRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsRemoteDataSource.swift; sourceTree = "<group>"; };
 		267DAC6B2BE3539600D0901A /* LocationsNetworkRequesterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsNetworkRequesterTests.swift; sourceTree = "<group>"; };
+		26C0D2122BE358D300A4042E /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		26C0D2152BE358F700A4042E /* RickAndMorty.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RickAndMorty.xcdatamodel; sourceTree = "<group>"; };
 		26C34A1F2BE297FF0070A6C3 /* RickAndMortyGraphQL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMortyGraphQL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26C34A222BE297FF0070A6C3 /* RickAndMortyGraphQLApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMortyGraphQLApp.swift; sourceTree = "<group>"; };
 		26C34A242BE297FF0070A6C3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -136,6 +140,7 @@
 		267DAC322BE2E76800D0901A /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				26C34A242BE297FF0070A6C3 /* ContentView.swift */,
 				267DAC332BE2E77300D0901A /* Foundation */,
 			);
 			path = UI;
@@ -205,6 +210,23 @@
 			path = Mocks;
 			sourceTree = "<group>";
 		};
+		26C0D2112BE358BD00A4042E /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				26C0D2122BE358D300A4042E /* CoreDataStack.swift */,
+				26C0D2142BE358F700A4042E /* RickAndMorty.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		26C0D2172BE3593100A4042E /* App */ = {
+			isa = PBXGroup;
+			children = (
+				26C34A222BE297FF0070A6C3 /* RickAndMortyGraphQLApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		26C34A162BE297FF0070A6C3 = {
 			isa = PBXGroup;
 			children = (
@@ -230,12 +252,12 @@
 		26C34A212BE297FF0070A6C3 /* RickAndMortyGraphQL */ = {
 			isa = PBXGroup;
 			children = (
+				26C0D2172BE3593100A4042E /* App */,
 				267DAC3B2BE2E82200D0901A /* Logging */,
 				267DAC412BE30A3A00D0901A /* DIContainer */,
 				267DAC322BE2E76800D0901A /* UI */,
+				26C0D2112BE358BD00A4042E /* CoreData */,
 				267DAC472BE3453E00D0901A /* RemoteDataSources */,
-				26C34A222BE297FF0070A6C3 /* RickAndMortyGraphQLApp.swift */,
-				26C34A242BE297FF0070A6C3 /* ContentView.swift */,
 				26C34A262BE298010070A6C3 /* Assets.xcassets */,
 				26C34A282BE298010070A6C3 /* Preview Content */,
 			);
@@ -432,7 +454,9 @@
 				267DAC4A2BE3455800D0901A /* CharactersRemoteDataSource.swift in Sources */,
 				267DAC662BE350AB00D0901A /* EpisodesRemoteDataSource.swift in Sources */,
 				267DAC362BE2E7A100D0901A /* ViewFoundation.swift in Sources */,
+				26C0D2132BE358D300A4042E /* CoreDataStack.swift in Sources */,
 				267DAC432BE30A4600D0901A /* Container.swift in Sources */,
+				26C0D2162BE358F700A4042E /* RickAndMorty.xcdatamodeld in Sources */,
 				267DAC462BE30E4C00D0901A /* ApolloNetworkClient.swift in Sources */,
 				267DAC3D2BE2E82A00D0901A /* log.swift in Sources */,
 				26C34A232BE297FF0070A6C3 /* RickAndMortyGraphQLApp.swift in Sources */,
@@ -780,6 +804,20 @@
 			productName = Apollo;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		26C0D2142BE358F700A4042E /* RickAndMorty.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				26C0D2152BE358F700A4042E /* RickAndMorty.xcdatamodel */,
+			);
+			currentVersion = 26C0D2152BE358F700A4042E /* RickAndMorty.xcdatamodel */;
+			name = RickAndMorty.xcdatamodeld;
+			path = /Users/coletongorecke/Developer/Projects/RickAndMortyGraphQL/RickAndMortyGraphQL/CoreData/RickAndMorty.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 26C34A172BE297FF0070A6C3 /* Project object */;
 }

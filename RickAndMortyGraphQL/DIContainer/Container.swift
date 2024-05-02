@@ -28,4 +28,9 @@ extension Container {
         self { LocationsRemoteRepo() as LocationsRemoteDataSource }
             .cached
     }
+    
+    var coreDataStack: Factory<CoreDataStack> {
+        self { CoreDataStack.shared }
+            .singleton
+    }
 }
