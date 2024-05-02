@@ -230,10 +230,10 @@
 		26C34A212BE297FF0070A6C3 /* RickAndMortyGraphQL */ = {
 			isa = PBXGroup;
 			children = (
-				267DAC472BE3453E00D0901A /* RemoteDataSources */,
-				267DAC412BE30A3A00D0901A /* DIContainer */,
 				267DAC3B2BE2E82200D0901A /* Logging */,
+				267DAC412BE30A3A00D0901A /* DIContainer */,
 				267DAC322BE2E76800D0901A /* UI */,
+				267DAC472BE3453E00D0901A /* RemoteDataSources */,
 				26C34A222BE297FF0070A6C3 /* RickAndMortyGraphQLApp.swift */,
 				26C34A242BE297FF0070A6C3 /* ContentView.swift */,
 				26C34A262BE298010070A6C3 /* Assets.xcassets */,
