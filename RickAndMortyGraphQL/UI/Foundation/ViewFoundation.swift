@@ -50,9 +50,18 @@ public protocol ViewContent: View {
     init(state: Binding<State>)
 }
 
-/// A view that binds a ``ViewModel`` to a ``ViewContent`` type.
-///
-/// Use as is, or copy this stack and rename to apply EnvironmentObjects to any view that this is used in.
+/* 
+ 
+ A view that binds a ``ViewModel`` to a ``ViewContent`` type.
+ 
+ To use simply create 3 objects:
+ 1. A ViewState object.
+ ```swift
+ struct MyViewState: ViewState {
+ 
+ }
+ ```
+*/
 public struct ViewStack<
     S: ViewState,
     VM: ViewModel<S>,

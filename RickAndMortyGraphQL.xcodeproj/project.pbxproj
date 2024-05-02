@@ -23,6 +23,7 @@
 		267DAC3D2BE2E82A00D0901A /* log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267DAC3C2BE2E82A00D0901A /* log.swift */; };
 		267DAC402BE2E89C00D0901A /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 267DAC3F2BE2E89C00D0901A /* Factory */; };
 		267DAC432BE30A4600D0901A /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267DAC422BE30A4600D0901A /* Container.swift */; };
+		267DAC462BE30E4C00D0901A /* ApolloNetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267DAC452BE30E4C00D0901A /* ApolloNetworkClient.swift */; };
 		26C34A232BE297FF0070A6C3 /* RickAndMortyGraphQLApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C34A222BE297FF0070A6C3 /* RickAndMortyGraphQLApp.swift */; };
 		26C34A252BE297FF0070A6C3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C34A242BE297FF0070A6C3 /* ContentView.swift */; };
 		26C34A272BE298010070A6C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26C34A262BE298010070A6C3 /* Assets.xcassets */; };
@@ -57,6 +58,7 @@
 		267DAC3C2BE2E82A00D0901A /* log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = log.swift; sourceTree = "<group>"; };
 		267DAC422BE30A4600D0901A /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
 		267DAC442BE30A9100D0901A /* fetch-and-generate-schema.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "fetch-and-generate-schema.sh"; sourceTree = "<group>"; };
+		267DAC452BE30E4C00D0901A /* ApolloNetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApolloNetworkClient.swift; sourceTree = "<group>"; };
 		26C34A1F2BE297FF0070A6C3 /* RickAndMortyGraphQL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMortyGraphQL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26C34A222BE297FF0070A6C3 /* RickAndMortyGraphQLApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMortyGraphQLApp.swift; sourceTree = "<group>"; };
 		26C34A242BE297FF0070A6C3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				266078C12BE2C71A003250FD /* Schema */,
 				266078A62BE2C5CA003250FD /* Queries */,
 				267DAC442BE30A9100D0901A /* fetch-and-generate-schema.sh */,
+				267DAC452BE30E4C00D0901A /* ApolloNetworkClient.swift */,
 			);
 			path = GraphQL;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 				267DAC372BE2E7A100D0901A /* Navigator.swift in Sources */,
 				267DAC362BE2E7A100D0901A /* ViewFoundation.swift in Sources */,
 				267DAC432BE30A4600D0901A /* Container.swift in Sources */,
+				267DAC462BE30E4C00D0901A /* ApolloNetworkClient.swift in Sources */,
 				267DAC3D2BE2E82A00D0901A /* log.swift in Sources */,
 				26C34A232BE297FF0070A6C3 /* RickAndMortyGraphQLApp.swift in Sources */,
 			);
