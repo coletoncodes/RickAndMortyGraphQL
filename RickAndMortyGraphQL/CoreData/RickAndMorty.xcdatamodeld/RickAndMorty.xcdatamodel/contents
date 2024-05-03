@@ -1,33 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22757" systemVersion="23E224" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
-    <entity name="CharacterEntity" representedClassName="CharacterEntity" syncable="YES">
-        <attribute name="createdAt" attributeType="String"/>
-        <attribute name="gender" attributeType="String"/>
-        <attribute name="id" attributeType="String"/>
-        <attribute name="imageURLString" attributeType="String"/>
-        <attribute name="name" attributeType="String"/>
-        <attribute name="species" attributeType="String"/>
-        <attribute name="status" attributeType="String"/>
-        <attribute name="type" attributeType="String"/>
-        <relationship name="episodes" toMany="YES" deletionRule="Nullify" destinationEntity="EpisodeEntity" inverseName="characters" inverseEntity="EpisodeEntity"/>
-        <relationship name="lastKnownLocation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LocationEntity" inverseName="residents" inverseEntity="LocationEntity"/>
-        <relationship name="origin" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LocationEntity" inverseName="originatedCharacters" inverseEntity="LocationEntity"/>
-    </entity>
-    <entity name="EpisodeEntity" representedClassName="EpisodeEntity" syncable="YES">
-        <attribute name="airDate" attributeType="String"/>
-        <attribute name="createdAt" attributeType="String"/>
-        <attribute name="episodeCode" attributeType="String"/>
-        <attribute name="id" attributeType="String"/>
-        <attribute name="name" attributeType="String"/>
-        <relationship name="characters" toMany="YES" deletionRule="Nullify" destinationEntity="CharacterEntity" inverseName="episodes" inverseEntity="CharacterEntity"/>
-    </entity>
-    <entity name="LocationEntity" representedClassName="LocationEntity" syncable="YES">
-        <attribute name="createdAt" attributeType="String"/>
-        <attribute name="dimension" attributeType="String"/>
-        <attribute name="id" attributeType="String"/>
-        <attribute name="name" attributeType="String"/>
-        <attribute name="type" attributeType="String"/>
-        <relationship name="originatedCharacters" toMany="YES" deletionRule="Nullify" destinationEntity="CharacterEntity" inverseName="origin" inverseEntity="CharacterEntity"/>
-        <relationship name="residents" toMany="YES" deletionRule="Nullify" destinationEntity="CharacterEntity" inverseName="lastKnownLocation" inverseEntity="CharacterEntity"/>
-    </entity>
+    <entity name="CharacterEntity" representedClassName="CharacterEntity" syncable="YES"/>
 </model>

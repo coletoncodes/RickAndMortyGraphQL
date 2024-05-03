@@ -1,9 +1,0 @@
-query Episode($episodeId: ID!) {
-  episode(id: $episodeId) {
-    characters {
-      image
-      name
-      status
-    }
-  }
-}
