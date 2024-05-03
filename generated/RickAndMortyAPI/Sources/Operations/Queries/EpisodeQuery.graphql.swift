@@ -30,20 +30,6 @@ public class EpisodeQuery: GraphQLQuery {
     /// Get a specific episode by ID
     public var episode: Episode? { __data["episode"] }
 
-    public init(
-      episode: Episode? = nil
-    ) {
-      self.init(_dataDict: DataDict(
-        data: [
-          "__typename": RickAndMortyAPI.Objects.Query.typename,
-          "episode": episode._fieldData,
-        ],
-        fulfilledFragments: [
-          ObjectIdentifier(EpisodeQuery.Data.self)
-        ]
-      ))
-    }
-
     /// Episode
     ///
     /// Parent Type: `Episode`
@@ -59,20 +45,6 @@ public class EpisodeQuery: GraphQLQuery {
 
       /// List of characters who have been seen in the episode.
       public var characters: [Character?] { __data["characters"] }
-
-      public init(
-        characters: [Character?]
-      ) {
-        self.init(_dataDict: DataDict(
-          data: [
-            "__typename": RickAndMortyAPI.Objects.Episode.typename,
-            "characters": characters._fieldData,
-          ],
-          fulfilledFragments: [
-            ObjectIdentifier(EpisodeQuery.Data.Episode.self)
-          ]
-        ))
-      }
 
       /// Episode.Character
       ///
@@ -96,24 +68,6 @@ public class EpisodeQuery: GraphQLQuery {
         public var name: String? { __data["name"] }
         /// The status of the character ('Alive', 'Dead' or 'unknown').
         public var status: String? { __data["status"] }
-
-        public init(
-          image: String? = nil,
-          name: String? = nil,
-          status: String? = nil
-        ) {
-          self.init(_dataDict: DataDict(
-            data: [
-              "__typename": RickAndMortyAPI.Objects.Character.typename,
-              "image": image,
-              "name": name,
-              "status": status,
-            ],
-            fulfilledFragments: [
-              ObjectIdentifier(EpisodeQuery.Data.Episode.Character.self)
-            ]
-          ))
-        }
       }
     }
   }

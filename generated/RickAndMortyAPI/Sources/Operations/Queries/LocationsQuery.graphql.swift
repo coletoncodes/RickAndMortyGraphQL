@@ -30,20 +30,6 @@ public class LocationsQuery: GraphQLQuery {
     /// Get the list of all locations
     public var locations: Locations? { __data["locations"] }
 
-    public init(
-      locations: Locations? = nil
-    ) {
-      self.init(_dataDict: DataDict(
-        data: [
-          "__typename": RickAndMortyAPI.Objects.Query.typename,
-          "locations": locations._fieldData,
-        ],
-        fulfilledFragments: [
-          ObjectIdentifier(LocationsQuery.Data.self)
-        ]
-      ))
-    }
-
     /// Locations
     ///
     /// Parent Type: `Locations`
@@ -60,22 +46,6 @@ public class LocationsQuery: GraphQLQuery {
 
       public var info: Info? { __data["info"] }
       public var results: [Result?]? { __data["results"] }
-
-      public init(
-        info: Info? = nil,
-        results: [Result?]? = nil
-      ) {
-        self.init(_dataDict: DataDict(
-          data: [
-            "__typename": RickAndMortyAPI.Objects.Locations.typename,
-            "info": info._fieldData,
-            "results": results._fieldData,
-          ],
-          fulfilledFragments: [
-            ObjectIdentifier(LocationsQuery.Data.Locations.self)
-          ]
-        ))
-      }
 
       /// Locations.Info
       ///
@@ -101,26 +71,6 @@ public class LocationsQuery: GraphQLQuery {
         public var pages: Int? { __data["pages"] }
         /// Number of the previous page (if it exists)
         public var prev: Int? { __data["prev"] }
-
-        public init(
-          count: Int? = nil,
-          next: Int? = nil,
-          pages: Int? = nil,
-          prev: Int? = nil
-        ) {
-          self.init(_dataDict: DataDict(
-            data: [
-              "__typename": RickAndMortyAPI.Objects.Info.typename,
-              "count": count,
-              "next": next,
-              "pages": pages,
-              "prev": prev,
-            ],
-            fulfilledFragments: [
-              ObjectIdentifier(LocationsQuery.Data.Locations.Info.self)
-            ]
-          ))
-        }
       }
 
       /// Locations.Result
@@ -147,26 +97,6 @@ public class LocationsQuery: GraphQLQuery {
         public var name: String? { __data["name"] }
         /// The type of the location.
         public var type: String? { __data["type"] }
-
-        public init(
-          dimension: String? = nil,
-          id: RickAndMortyAPI.ID? = nil,
-          name: String? = nil,
-          type: String? = nil
-        ) {
-          self.init(_dataDict: DataDict(
-            data: [
-              "__typename": RickAndMortyAPI.Objects.Location.typename,
-              "dimension": dimension,
-              "id": id,
-              "name": name,
-              "type": type,
-            ],
-            fulfilledFragments: [
-              ObjectIdentifier(LocationsQuery.Data.Locations.Result.self)
-            ]
-          ))
-        }
       }
     }
   }

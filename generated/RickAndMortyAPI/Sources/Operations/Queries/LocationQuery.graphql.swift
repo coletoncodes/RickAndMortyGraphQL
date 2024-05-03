@@ -30,20 +30,6 @@ public class LocationQuery: GraphQLQuery {
     /// Get a specific locations by ID
     public var location: Location? { __data["location"] }
 
-    public init(
-      location: Location? = nil
-    ) {
-      self.init(_dataDict: DataDict(
-        data: [
-          "__typename": RickAndMortyAPI.Objects.Query.typename,
-          "location": location._fieldData,
-        ],
-        fulfilledFragments: [
-          ObjectIdentifier(LocationQuery.Data.self)
-        ]
-      ))
-    }
-
     /// Location
     ///
     /// Parent Type: `Location`
@@ -59,20 +45,6 @@ public class LocationQuery: GraphQLQuery {
 
       /// List of characters who have been last seen in the location.
       public var residents: [Resident?] { __data["residents"] }
-
-      public init(
-        residents: [Resident?]
-      ) {
-        self.init(_dataDict: DataDict(
-          data: [
-            "__typename": RickAndMortyAPI.Objects.Location.typename,
-            "residents": residents._fieldData,
-          ],
-          fulfilledFragments: [
-            ObjectIdentifier(LocationQuery.Data.Location.self)
-          ]
-        ))
-      }
 
       /// Location.Resident
       ///
@@ -102,28 +74,6 @@ public class LocationQuery: GraphQLQuery {
         public var species: String? { __data["species"] }
         /// The status of the character ('Alive', 'Dead' or 'unknown').
         public var status: String? { __data["status"] }
-
-        public init(
-          id: RickAndMortyAPI.ID? = nil,
-          image: String? = nil,
-          name: String? = nil,
-          species: String? = nil,
-          status: String? = nil
-        ) {
-          self.init(_dataDict: DataDict(
-            data: [
-              "__typename": RickAndMortyAPI.Objects.Character.typename,
-              "id": id,
-              "image": image,
-              "name": name,
-              "species": species,
-              "status": status,
-            ],
-            fulfilledFragments: [
-              ObjectIdentifier(LocationQuery.Data.Location.Resident.self)
-            ]
-          ))
-        }
       }
     }
   }
