@@ -43,8 +43,6 @@ If building fails initially, it is likely due to the apolla CLI tool not being i
 
 For information regarding this, please refer to the [Apollo Documentation](https://www.apollographql.com/docs/ios/get-started)
 
-![Install Apolla CLI](install-apollo-xcode-plugin.png?raw=true "Install Apolla CLI")
-
 ## GraphQL Code Generation
 
 ### Configuration
@@ -53,7 +51,22 @@ GraphQL code generation is configured using the `apollo-ios-cli`. The configurat
 
 ### Running Code Generation
 
-A custom run script in the Xcode build phases is set up to trigger the Apollo iOS CLI tool. This script ensures that the GraphQL Swift code is regenerated whenever changes are made to GraphQL files. This process is automated to keep the API data types and service calls up to date with the latest schema.
+A custom run script in the Xcode build phases is set up to call a fetch and generate script.
+
+This script fetches the GraphQL schema from this public URL: https://rickandmortyapi.com/graphql
+
+To view or modify the script, refer to 
+```swift
+RickAndMortyGraphQL/GraphQL/fetch-and-generate-schema.sh
+```
+
+#### Code Generation Expanded:
+The codegen properties are defined in
+```swift
+RickAndMortyGraphQL/apollo-codegen-config.json
+```
+
+This script is called via the 'Fetch Rick & Morty Scheme & Generate Code' run script. 
 
 To view or modify the run script:
 1. Navigate to the project settings in Xcode.

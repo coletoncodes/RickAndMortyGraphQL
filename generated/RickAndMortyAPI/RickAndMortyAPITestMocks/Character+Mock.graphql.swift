@@ -10,7 +10,6 @@ public class Character: MockObject {
   public typealias MockValueCollectionType = Array<Mock<Character>>
 
   public struct MockFields {
-    @Field<String>("created") public var created
     @Field<[Episode?]>("episode") public var episode
     @Field<String>("gender") public var gender
     @Field<RickAndMortyAPI.ID>("id") public var id
@@ -26,7 +25,6 @@ public class Character: MockObject {
 
 public extension Mock where O == Character {
   convenience init(
-    created: String? = nil,
     episode: [Mock<Episode>?]? = nil,
     gender: String? = nil,
     id: RickAndMortyAPI.ID? = nil,
@@ -39,7 +37,6 @@ public extension Mock where O == Character {
     type: String? = nil
   ) {
     self.init()
-    _setScalar(created, for: \.created)
     _setList(episode, for: \.episode)
     _setScalar(gender, for: \.gender)
     _setScalar(id, for: \.id)

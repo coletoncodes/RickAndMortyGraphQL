@@ -1,0 +1,27 @@
+{
+  "configurations" : [
+    {
+      "id" : "5C19EB3F-A539-4705-836E-FB753BB85630",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "skippedTests" : [
+        "MockInjectingTestCase"
+      ],
+      "target" : {
+        "containerPath" : "container:RickAndMortyGraphQL.xcodeproj",
+        "identifier" : "267DAC4E2BE3460400D0901A",
+        "name" : "RickAndMortyGraphQLTests"
+      }
+    }
+  ],
+  "version" : 1
+}
