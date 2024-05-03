@@ -19,13 +19,8 @@ extension Container {
             .cached
     }
     
-    var episodesRemoteDataSource: Factory<EpisodesRemoteDataSource> {
-        self { EpisodesRemoteRepo() as EpisodesRemoteDataSource }
-            .cached
-    }
-    
-    var locationsRemoteDataSource: Factory<LocationsRemoteDataSource> {
-        self { LocationsRemoteRepo() as LocationsRemoteDataSource }
+    var charactersLocalDataSource: Factory<CharactersLocalDataSource> {
+        self { CharactersLocalRepo() as CharactersLocalDataSource }
             .cached
     }
     
