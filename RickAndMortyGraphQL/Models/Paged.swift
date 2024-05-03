@@ -15,23 +15,42 @@ actor Paged<DataModel> {
     /// The current page's data
     private(set) var data: [DataModel]
     
+    /// The page info for this object.
+    private var pageInfo: PageInfo
+    
+    struct PageInfo {
+        var currentPage: Int?
+        var totalPages: Int?
+        
+        init(
+            currentPage: Int?,
+            totalPages: Int?
+        ) {
+            self.currentPage = currentPage
+            self.totalPages = totalPages
+        }
+    }
+    
     /// A closure that, when executed, will asynchronously fetch the next page of data.
     /// This closure is `nil` if there are no more pages to fetch.
-    private var nextPageFetcher: (() async throws -> Paged<DataModel>)?
+    private let fetchPage: (Int) async throws -> Paged<DataModel>
     
     /// Initializes a new instance of the `Paged` class with the given data
     /// and an optional closure to fetch the next page.
     /// - Parameters:
     ///   - data: The current page of data as an array of `DataModel`.
-    ///   - nextPageFetcher: An optional closure that fetches the next page of data.
+    ///   - fetchPage: An optional closure that fetches the next page of data for the given page number.
     ///     It returns an instance of `Paged<DataModel>`
     ///     or throws an error if unable to fetch the next page. Defaults to `nil`.
+    ///   - pageInfo: The initial ``PageInfo`` for this object.
     init(
         data: [DataModel],
-        nextPageFetcher: (() async throws -> Paged<DataModel>)? = nil
+        pageInfo: PageInfo,
+        fetchPage: @escaping (Int) async throws -> Paged<DataModel>
     ) {
         self.data = data
-        self.nextPageFetcher = nextPageFetcher
+        self.pageInfo = pageInfo
+        self.fetchPage = fetchPage
     }
     
     /// Updates the objects data with the results of the nextPageFetcher, if it exists.
@@ -39,27 +58,21 @@ actor Paged<DataModel> {
     /// - Throws: An error if there is an issue fetching the next page of data,
     ///     or no new data exists.
     func fetchNextPage() async throws {
-        guard let nextPageFetcher = nextPageFetcher else {
-            log("No next page to fetch", .error, .persistence)
+        guard let currentPage = pageInfo.currentPage,
+              let totalPages = pageInfo.totalPages,
+              currentPage < totalPages
+        else {
             throw PagedError.noNextPage
         }
         
-        do {
-            let newPageData = try await nextPageFetcher()
-            await data += newPageData.data
-            self.nextPageFetcher = await newPageData.nextPageFetcher
-        } catch {
-            let errorStr = "Failed to fetch next page with error: \(error)"
-            log(errorStr, .error, .networking)
-            throw PagedError.fetchNextPageError(errorStr)
-        }
+        let newData = try await fetchPage(currentPage + 1)
+        data += await newData.data
+        pageInfo = await newData.pageInfo
     }
     
     /// Errors thrown from a ``Paged`` object.
     enum PagedError: Error {
         /// No next page was available
         case noNextPage
-        /// An error occurred when attempting to fetch the next page.
-        case fetchNextPageError(String)
     }
 }

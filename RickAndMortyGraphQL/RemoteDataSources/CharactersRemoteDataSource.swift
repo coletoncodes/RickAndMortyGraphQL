@@ -37,37 +37,28 @@ actor CharactersRemoteRepo: CharactersRemoteDataSource {
     // MARK: - Helpers
     /// Fetches characters for the specified page and returns a `Paged` object.
     private func fetchAndCacheCharacters(for page: Int) async throws -> Paged<Character> {
-        log("Attempting to fetch characters at page: \(page)", .info, .networking)
         let query = try await client.fetch(query: CharactersQuery(page: .some(page)))
-        guard let results = query.characters?.results, let pageInfo = query.characters?.info else {
-            let logStr = "The results of characters or pageInfo was were nil"
+        
+        guard let results = query.characters?.results,
+              let pageInfo = query.characters?.info
+        else {
+            let logStr = "The results of characters or pageInfo were nil"
             log(logStr, .info, .networking)
             throw CharacterRemoteRepoError.nilResults(logStr)
         }
         
-        let characters: [Character] = results.compactMap { result in
-            if let result = result {
+        let characters = results.compactMap { result in
+            if let result {
                 return Character(fromQueryResult: result)
             }
             return nil
         }
         
-        // Determine pages
-        nextPage = pageInfo.next ?? nextPage
-        let totalPages = pageInfo.pages ?? 0
-        let hasNextPage = nextPage < totalPages
-        
-        // Set next page fetcher if there are more pages to fetch
-        let nextPageFetcher: (() async throws -> Paged<Character>)? = hasNextPage ? { [weak self] in
-            guard let self = self else {
-                throw CharacterRemoteRepoError.deallocatedSelf
-            }
-            return try await self.fetchAndCacheCharacters(for: self.nextPage)
-        } : nil
-        
-        let paged = Paged(data: characters, nextPageFetcher: nextPageFetcher)
-        pagedCharactersCache = paged
-        return paged
+        return Paged(
+            data: characters,
+            pageInfo: .init(currentPage: page, totalPages: pageInfo.pages),
+            fetchPage: fetchAndCacheCharacters
+        )
     }
     
     enum CharacterRemoteRepoError: Error {
