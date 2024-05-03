@@ -14,23 +14,33 @@ struct CharacterRootViewContent: ViewContent {
     @Binding var state: State
     
     var body: some View {
-        List {
-            ForEach(state.characters) { character in
-                CharacterRow(character: character)
-                    .onAppear {
-                        if character == state.characters.last {
-                            state.fetchNextPage()
+        Section {
+            List {
+                ForEach(state.characters) { character in
+                    CharacterRow(character: character)
+                        .onAppear {
+                            // Check if the currently appearing character is among the last few in the array
+                            if let lastFewIndex = state.characters.index(state.characters.endIndex, offsetBy: -8, limitedBy: 0) {
+                                if character == state.characters[lastFewIndex] {
+                                    state.fetchNextPage()
+                                }
+                            }
                         }
-                    }
+                    
+                    
+                }
             }
-        }
-        .overlay(
-            Text("No characters available")
-                .opacity(state.shouldShowEmptyState ? 1 : 0)
-        )
-        .overlay {
-            ProgressView()
-                .opacity(state.isPerformingInitialLoad ? 1 : 0)
+            .overlay(
+                Text("No characters available")
+                    .opacity(state.shouldShowEmptyState ? 1 : 0)
+            )
+            .overlay {
+                ProgressView()
+                    .opacity(state.isPerformingInitialLoad ? 1 : 0)
+            }
+        } footer: {
+            ProgressView("Fetching more...")
+                .opacity(state.isFetchingNextPage ? 1 : 0)
         }
     }
 }

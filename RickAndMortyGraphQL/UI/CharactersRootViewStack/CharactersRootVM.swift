@@ -14,7 +14,7 @@ struct CharactersRootViewState: ViewState {
     var fetchNextPage: () -> Void = { }
     
     var shouldShowEmptyState: Bool {
-        isPerformingInitialLoad
+        characters.isEmpty
     }
     
     var isFetchingNextPage: Bool = false
@@ -43,10 +43,14 @@ class CharactersRootVM: ViewModel<CharactersRootViewState> {
             do {
                 self.state.characters = try await charactersRespository.loadPersistedCharacters()
                 log("Fetched \(self.state.characters.count) persisted characters", .debug, .viewModel)
-                await setPaged()
+                if self.state.characters.isEmpty {
+                    // Fresh fetch
+                    self.state.characters = try await charactersRespository.fetchRemoteCharacters().data
+                }
             } catch {
                 log("Failed to load initial characters: \(error)", .error, .viewModel)
             }
+            await setPaged()
         }
     }
     

@@ -7,6 +7,19 @@
 
 import Foundation
 
+struct PageInfo: Codable {
+    var currentPage: Int?
+    var totalPages: Int?
+    
+    init(
+        currentPage: Int?,
+        totalPages: Int?
+    ) {
+        self.currentPage = currentPage
+        self.totalPages = totalPages
+    }
+}
+
 /// A generic class that encapsulates a paginated data model
 /// and the mechanism to fetch subsequent pages.
 /// It holds an array of data items of type `DataModel`
@@ -17,19 +30,6 @@ actor Paged<DataModel> {
     
     /// The page info for this object.
     private(set) var pageInfo: PageInfo
-    
-    struct PageInfo {
-        var currentPage: Int?
-        var totalPages: Int?
-        
-        init(
-            currentPage: Int?,
-            totalPages: Int?
-        ) {
-            self.currentPage = currentPage
-            self.totalPages = totalPages
-        }
-    }
     
     /// A closure that, when executed, will asynchronously fetch the next page of data.
     /// This closure is `nil` if there are no more pages to fetch.

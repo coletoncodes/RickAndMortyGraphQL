@@ -21,21 +21,21 @@ final class CharactersRepository {
     func loadPersistedCharacters() async throws -> [Character] {
         return try await localDataSource.fetchCharacters()
     }
-
+    
     // Load initial characters from remote and save to local, then initialize Paged
     private func loadInitialCharacters() async throws -> Paged<Character> {
-        var initialPage = try await remoteDataSource.loadInitialCharacters()
-        try await localDataSource.saveCharacters(initialPage.data) // save initial fetch
+        let initialPage = try await remoteDataSource.loadInitialCharacters()
         
         // Create the initial Paged instance with a closure to handle subsequent pages
-        try await self.fetchAndSavePage(page: &initialPage)
-        return initialPage
-    }
-
-    // Fetches a page by number from remote, saves it locally, and returns a new Paged instance
-    private func fetchAndSavePage(page: inout Paged<Character>) async throws {
-        try await page.fetchNextPage()
-        try await localDataSource.saveCharacters(page.data)
+        return await Paged(
+            data: initialPage.data,
+            pageInfo: initialPage.pageInfo) { [weak self] pageNumber in
+                guard let self else { throw CharacterRepoError.deallocatedSelf }
+                log("Fetching next page at page: \(pageNumber) and saving results", .debug, .persistence)
+                try await initialPage.fetchNextPage()
+                try await self.localDataSource.saveCharacters(initialPage.data)
+                return try await loadInitialCharacters()
+        }
     }
     
     enum CharacterRepoError: Error {

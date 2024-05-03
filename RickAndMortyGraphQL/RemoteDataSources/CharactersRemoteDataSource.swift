@@ -29,7 +29,13 @@ actor CharactersRemoteRepo: CharactersRemoteDataSource {
         if let cache = pagedCharactersCache {
             return cache
         } else {
-            return try await fetchAndCacheCharacters(for: 1)
+            if let persistedCurrentPage = loadPageInfo()?.currentPage {
+                log("Fetched persisted current page: \(persistedCurrentPage)", .debug, .persistence)
+                return try await fetchAndCacheCharacters(for: persistedCurrentPage)
+            } else {
+                // Assume we are triggering a new fetch
+                return try await fetchAndCacheCharacters(for: 1)
+            }
         }
     }
     
@@ -54,11 +60,35 @@ actor CharactersRemoteRepo: CharactersRemoteDataSource {
         
         let totalPages = query.characters?.info?.pages
         
-        return Paged(
+        let pageInfo = PageInfo(currentPage: page, totalPages: totalPages)
+        try savePageInfo(pageInfo)
+        
+        let paged = Paged(
             data: characters,
-            pageInfo: .init(currentPage: page, totalPages: totalPages),
+            pageInfo: pageInfo,
             fetchPage: fetchAndCacheCharacters
         )
+        pagedCharactersCache = paged
+        return paged
+    }
+    
+    private func savePageInfo(_ pageInfo: PageInfo) throws {
+        let encoder = JSONEncoder()
+        let encoded = try encoder.encode(pageInfo)
+        UserDefaults.standard.set(encoded, forKey: "currentPageInfo")
+        log("Saved page info: \(pageInfo)", .debug, .persistence)
+    }
+    
+    func loadPageInfo() -> PageInfo? {
+        let decoder = JSONDecoder()
+        if let savedPageInfo = UserDefaults.standard.data(forKey: "currentPageInfo") {
+            do {
+                return try decoder.decode(PageInfo.self, from: savedPageInfo)
+            } catch {
+                log("Failed to decode object with error: \(error)", .error, .persistence)
+            }
+        }
+        return nil
     }
     
     enum CharacterRemoteRepoError: Error {
