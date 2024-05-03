@@ -30,6 +30,20 @@ public class EpisodesQuery: GraphQLQuery {
     /// Get the list of all episodes
     public var episodes: Episodes? { __data["episodes"] }
 
+    public init(
+      episodes: Episodes? = nil
+    ) {
+      self.init(_dataDict: DataDict(
+        data: [
+          "__typename": RickAndMortyAPI.Objects.Query.typename,
+          "episodes": episodes._fieldData,
+        ],
+        fulfilledFragments: [
+          ObjectIdentifier(EpisodesQuery.Data.self)
+        ]
+      ))
+    }
+
     /// Episodes
     ///
     /// Parent Type: `Episodes`
@@ -46,6 +60,22 @@ public class EpisodesQuery: GraphQLQuery {
 
       public var info: Info? { __data["info"] }
       public var results: [Result?]? { __data["results"] }
+
+      public init(
+        info: Info? = nil,
+        results: [Result?]? = nil
+      ) {
+        self.init(_dataDict: DataDict(
+          data: [
+            "__typename": RickAndMortyAPI.Objects.Episodes.typename,
+            "info": info._fieldData,
+            "results": results._fieldData,
+          ],
+          fulfilledFragments: [
+            ObjectIdentifier(EpisodesQuery.Data.Episodes.self)
+          ]
+        ))
+      }
 
       /// Episodes.Info
       ///
@@ -71,6 +101,26 @@ public class EpisodesQuery: GraphQLQuery {
         public var pages: Int? { __data["pages"] }
         /// Number of the previous page (if it exists)
         public var prev: Int? { __data["prev"] }
+
+        public init(
+          count: Int? = nil,
+          next: Int? = nil,
+          pages: Int? = nil,
+          prev: Int? = nil
+        ) {
+          self.init(_dataDict: DataDict(
+            data: [
+              "__typename": RickAndMortyAPI.Objects.Info.typename,
+              "count": count,
+              "next": next,
+              "pages": pages,
+              "prev": prev,
+            ],
+            fulfilledFragments: [
+              ObjectIdentifier(EpisodesQuery.Data.Episodes.Info.self)
+            ]
+          ))
+        }
       }
 
       /// Episodes.Result
@@ -100,6 +150,28 @@ public class EpisodesQuery: GraphQLQuery {
         public var name: String? { __data["name"] }
         /// The id of the episode.
         public var id: RickAndMortyAPI.ID? { __data["id"] }
+
+        public init(
+          air_date: String? = nil,
+          created: String? = nil,
+          episode: String? = nil,
+          name: String? = nil,
+          id: RickAndMortyAPI.ID? = nil
+        ) {
+          self.init(_dataDict: DataDict(
+            data: [
+              "__typename": RickAndMortyAPI.Objects.Episode.typename,
+              "air_date": air_date,
+              "created": created,
+              "episode": episode,
+              "name": name,
+              "id": id,
+            ],
+            fulfilledFragments: [
+              ObjectIdentifier(EpisodesQuery.Data.Episodes.Result.self)
+            ]
+          ))
+        }
       }
     }
   }

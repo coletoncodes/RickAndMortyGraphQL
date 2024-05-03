@@ -30,6 +30,20 @@ public class CharacterQuery: GraphQLQuery {
     /// Get a specific character by ID
     public var character: Character? { __data["character"] }
 
+    public init(
+      character: Character? = nil
+    ) {
+      self.init(_dataDict: DataDict(
+        data: [
+          "__typename": RickAndMortyAPI.Objects.Query.typename,
+          "character": character._fieldData,
+        ],
+        fulfilledFragments: [
+          ObjectIdentifier(CharacterQuery.Data.self)
+        ]
+      ))
+    }
+
     /// Character
     ///
     /// Parent Type: `Character`
@@ -48,6 +62,22 @@ public class CharacterQuery: GraphQLQuery {
       public var episode: [Episode?] { __data["episode"] }
       /// The character's last known location
       public var location: Location? { __data["location"] }
+
+      public init(
+        episode: [Episode?],
+        location: Location? = nil
+      ) {
+        self.init(_dataDict: DataDict(
+          data: [
+            "__typename": RickAndMortyAPI.Objects.Character.typename,
+            "episode": episode._fieldData,
+            "location": location._fieldData,
+          ],
+          fulfilledFragments: [
+            ObjectIdentifier(CharacterQuery.Data.Character.self)
+          ]
+        ))
+      }
 
       /// Character.Episode
       ///
@@ -70,6 +100,24 @@ public class CharacterQuery: GraphQLQuery {
         public var id: RickAndMortyAPI.ID? { __data["id"] }
         /// The name of the episode.
         public var name: String? { __data["name"] }
+
+        public init(
+          episode: String? = nil,
+          id: RickAndMortyAPI.ID? = nil,
+          name: String? = nil
+        ) {
+          self.init(_dataDict: DataDict(
+            data: [
+              "__typename": RickAndMortyAPI.Objects.Episode.typename,
+              "episode": episode,
+              "id": id,
+              "name": name,
+            ],
+            fulfilledFragments: [
+              ObjectIdentifier(CharacterQuery.Data.Character.Episode.self)
+            ]
+          ))
+        }
       }
 
       /// Character.Location
@@ -96,6 +144,26 @@ public class CharacterQuery: GraphQLQuery {
         public var name: String? { __data["name"] }
         /// The type of the location.
         public var type: String? { __data["type"] }
+
+        public init(
+          dimension: String? = nil,
+          id: RickAndMortyAPI.ID? = nil,
+          name: String? = nil,
+          type: String? = nil
+        ) {
+          self.init(_dataDict: DataDict(
+            data: [
+              "__typename": RickAndMortyAPI.Objects.Location.typename,
+              "dimension": dimension,
+              "id": id,
+              "name": name,
+              "type": type,
+            ],
+            fulfilledFragments: [
+              ObjectIdentifier(CharacterQuery.Data.Character.Location.self)
+            ]
+          ))
+        }
       }
     }
   }

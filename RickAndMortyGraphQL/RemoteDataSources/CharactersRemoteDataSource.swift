@@ -21,7 +21,6 @@ actor CharactersRemoteRepo: CharactersRemoteDataSource {
     
     // MARK: - Private Properties
     private var pagedCharactersCache: Paged<Character>?
-    private var nextPage: Int = 1
     
     // MARK: - Interface
     /// Fetches the first page of characters and returns a `Paged` object containing the data and a fetcher for subsequent pages.
@@ -30,19 +29,18 @@ actor CharactersRemoteRepo: CharactersRemoteDataSource {
         if let cache = pagedCharactersCache {
             return cache
         } else {
-            return try await fetchAndCacheCharacters(for: nextPage)
+            return try await fetchAndCacheCharacters(for: 1)
         }
     }
     
     // MARK: - Helpers
     /// Fetches characters for the specified page and returns a `Paged` object.
     private func fetchAndCacheCharacters(for page: Int) async throws -> Paged<Character> {
+        log("Fetching characters at page: \(page)", .info, .networking)
         let query = try await client.fetch(query: CharactersQuery(page: .some(page)))
         
-        guard let results = query.characters?.results,
-              let pageInfo = query.characters?.info
-        else {
-            let logStr = "The results of characters or pageInfo were nil"
+        guard let results = query.characters?.results else {
+            let logStr = "The results of characters were nil"
             log(logStr, .info, .networking)
             throw CharacterRemoteRepoError.nilResults(logStr)
         }
@@ -54,9 +52,11 @@ actor CharactersRemoteRepo: CharactersRemoteDataSource {
             return nil
         }
         
+        let totalPages = query.characters?.info?.pages
+        
         return Paged(
             data: characters,
-            pageInfo: .init(currentPage: page, totalPages: pageInfo.pages),
+            pageInfo: .init(currentPage: page, totalPages: totalPages),
             fetchPage: fetchAndCacheCharacters
         )
     }

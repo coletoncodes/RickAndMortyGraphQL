@@ -39,7 +39,7 @@ final class ApolloNetworkClient: ApolloNetworkingClient {
     // MARK: - Interface
     func fetch<Query: GraphQLQuery>(query: Query) async throws -> Query.Data {
         try await withCheckedThrowingContinuation { continuation in
-            self.client.fetch(query: query, cachePolicy: .fetchIgnoringCacheCompletely) { result in
+            self.client.fetch(query: query) { result in
                 log("Fetching query: \(type(of: query.self)) with variables: \(String(describing: query.__variables))", .info, .networking)
                 switch result {
                 case .success(let result):
