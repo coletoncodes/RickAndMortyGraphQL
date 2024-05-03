@@ -44,5 +44,10 @@
             "targetName": "RickAndMortyAPITestMocks"
          }
       }
-   }
+   },
+   "options" : {
+       "pruneGeneratedFiles" : true,
+       "schemaDocumentation" : "include",
+       "warningsOnDeprecatedUsage" : "exclude",
+     }
 }
