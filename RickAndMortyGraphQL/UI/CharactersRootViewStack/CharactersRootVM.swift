@@ -11,13 +11,19 @@ import Foundation
 struct CharactersRootViewState: ViewState {
     var characters: [Character] = []
     var isPerformingInitialLoad: Bool = false
-    var fetchNextPage: () -> Void = { }
+    var fetchNextPage: (Character) -> Void = { _ in }
     
     var shouldShowEmptyState: Bool {
         characters.isEmpty
     }
     
     var isFetchingNextPage: Bool = false
+    
+    var lastCharacterIndexForFetchNextPage: Int? {
+        let refreshOffsetIndex = -8
+        guard characters.count >= refreshOffsetIndex else { return nil }
+        return self.characters.index(characters.endIndex, offsetBy: refreshOffsetIndex, limitedBy: 0)
+    }
 }
 
 class CharactersRootVM: ViewModel<CharactersRootViewState> {
@@ -30,8 +36,13 @@ class CharactersRootVM: ViewModel<CharactersRootViewState> {
     override func configureState() {
         fetchPersistedCharacters()
         
-        state.fetchNextPage = { [weak self] in
-            self?.fetchNextPage()
+        state.fetchNextPage = { [weak self] character in
+            guard let self else { return }
+            if let fetchNextPageIndex = state.lastCharacterIndexForFetchNextPage {
+                if character == state.characters[fetchNextPageIndex] {
+                    self.fetchNextPage()
+                }
+            }
         }
     }
     

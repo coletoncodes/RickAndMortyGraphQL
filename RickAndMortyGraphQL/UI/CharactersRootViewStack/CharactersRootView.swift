@@ -19,29 +19,29 @@ struct CharacterRootViewContent: ViewContent {
                 ForEach(state.characters) { character in
                     CharacterRow(character: character)
                         .onAppear {
-                            // Check if the currently appearing character is among the last few in the array
-                            if let lastFewIndex = state.characters.index(state.characters.endIndex, offsetBy: -8, limitedBy: 0) {
-                                if character == state.characters[lastFewIndex] {
-                                    state.fetchNextPage()
-                                }
-                            }
+                            state.fetchNextPage(character)
                         }
-                    
-                    
                 }
             }
             .overlay(
                 Text("No characters available")
-                    .opacity(state.shouldShowEmptyState ? 1 : 0)
+                    .isHidden(state.shouldShowEmptyState)
             )
             .overlay {
                 ProgressView()
-                    .opacity(state.isPerformingInitialLoad ? 1 : 0)
+                    .isHidden(state.isPerformingInitialLoad)
             }
         } footer: {
             ProgressView("Fetching more...")
-                .opacity(state.isFetchingNextPage ? 1 : 0)
+                .isHidden(state.isFetchingNextPage)
         }
+    }
+}
+
+extension View {
+    /// Hides the view by setting the opacity to zero if isHidden is false.
+    func isHidden(_ isHidden: Bool) -> some View {
+        self.opacity(isHidden ? 1 : 0)
     }
 }
 
