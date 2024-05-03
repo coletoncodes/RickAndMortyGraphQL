@@ -42,13 +42,15 @@ final class CharactersLocalRepo: CharactersLocalDataSource {
         
         // Delete invalid entities
         let idsToDelete = existingIds.subtracting(newIds)
+        guard !idsToDelete.isEmpty else { return }
+        log("Deleting outdated characters of count: \(idsToDelete.count)", .debug, .persistence)
         for id in idsToDelete {
             try await deleteCharacter(byId: id)
         }
     }
     
     func fetchCharacters() async throws -> [Character] {
-        log("Fetching characters", .debug, .persistence)
+        log("Fetching persisted characters", .debug, .persistence)
         let context = coreDataStack.viewContext
         return try await context.perform {
             let request: NSFetchRequest<CharacterEntity> = CharacterEntity.fetchRequest()
@@ -58,7 +60,6 @@ final class CharactersLocalRepo: CharactersLocalDataSource {
     }
     
     private func deleteCharacter(byId id: String) async throws {
-        log("Deleting character with id: \(id)", .debug, .persistence)
         let context = coreDataStack.newBackgroundContext()
         return try await context.perform {
             let request: NSFetchRequest<CharacterEntity> = CharacterEntity.fetchRequest()
@@ -67,7 +68,6 @@ final class CharactersLocalRepo: CharactersLocalDataSource {
             if let entityToDelete = results.first {
                 context.delete(entityToDelete)
                 try context.save()
-                log("Deleted outdated character", .info, .persistence)
             }
         }
     }

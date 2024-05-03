@@ -23,34 +23,47 @@ struct CharactersRootViewState: ViewState {
 class CharactersRootVM: ViewModel<CharactersRootViewState> {
     // MARK: - Dependencies
     // TODO: - Replace with interactor
-//    @Injected(\.charactersRemoteDataSource) private var charactersRemoteDataSource
+    //    @Injected(\.charactersRemoteDataSource) private var charactersRemoteDataSource
     private let charactersRespository = CharactersRepository()
     private var currentPage: Paged<Character>?
     
     override func configureState() {
-        fetchInitialCharacters()
+        fetchPersistedCharacters()
         
         state.fetchNextPage = { [weak self] in
             self?.fetchNextPage()
         }
     }
     
-    private func fetchInitialCharacters() {
+    private func fetchPersistedCharacters() {
+        log("Fetching persisted characters", .debug, .viewModel)
         Task {
             self.state.isPerformingInitialLoad = true
             defer { self.state.isPerformingInitialLoad = false }
             do {
-                let pagedCharacters = try await charactersRespository.fetchCharacters()
-                currentPage = pagedCharacters
-                self.state.characters = await pagedCharacters.data
+                self.state.characters = try await charactersRespository.loadPersistedCharacters()
+                log("Fetched \(self.state.characters.count) persisted characters", .debug, .viewModel)
+                await setPaged()
             } catch {
                 log("Failed to load initial characters: \(error)", .error, .viewModel)
             }
         }
     }
     
-    func fetchNextPage() {
+    private func setPaged() async {
+        log("Setting up paged instance", .debug, .viewModel)
+        // setup next page
+        do {
+            let pagedCharacters = try await charactersRespository.fetchRemoteCharacters()
+            currentPage = pagedCharacters
+        } catch {
+            log("Failed to fetch remote characters with error: \(error)", .error, .viewModel)
+        }
+    }
+    
+    private func fetchNextPage() {
         guard !state.isFetchingNextPage, let currentPage = currentPage else { return }
+        log("Fetching next page", .debug, .viewModel)
         
         Task {
             self.state.isFetchingNextPage = true

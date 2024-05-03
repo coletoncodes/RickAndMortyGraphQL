@@ -14,8 +14,12 @@ final class CharactersRepository {
     @Injected(\.charactersRemoteDataSource) private var remoteDataSource
     
     // Fetches the initial page or the next page if possible
-    func fetchCharacters() async throws -> Paged<Character> {
+    func fetchRemoteCharacters() async throws -> Paged<Character> {
         return try await loadInitialCharacters()
+    }
+    
+    func loadPersistedCharacters() async throws -> [Character] {
+        return try await localDataSource.fetchCharacters()
     }
 
     // Load initial characters from remote and save to local, then initialize Paged
