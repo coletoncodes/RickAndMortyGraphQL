@@ -45,11 +45,11 @@ final class ApolloNetworkClient: ApolloNetworkingClient {
                 case .success(let result):
                     if let data = result.data {
                         // Log success with details
-                        log("Successfully fetched data of type: \(type(of: Query.Data.self))", .info, .networking)
+                        log("Successfully fetched query data", .info, .networking)
                         continuation.resume(returning: data)
                     } else {
                         // Log and handle cases where no data was returned
-                        let logStr = "The returned data for query of type: \(type(of: Query.self)) was nil"
+                        let logStr = "The returned data for query was nil"
                         log(logStr, .error, .networking)
                         continuation.resume(throwing: ApolloNetworkClientError.nilData(logStr))
                     }
