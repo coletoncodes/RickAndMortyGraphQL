@@ -13,16 +13,28 @@ final class CharactersRepository {
     @Injected(\.charactersLocalDataSource) private var localDataSource
     @Injected(\.charactersRemoteDataSource) private var remoteDataSource
     
-    private var currentPage: Paged<Character>?
+    // Fetches the initial page or the next page if possible
+    func fetchCharacters() async throws -> Paged<Character> {
+        return try await loadInitialCharacters()
+    }
+
+    // Load initial characters from remote and save to local, then initialize Paged
+    private func loadInitialCharacters() async throws -> Paged<Character> {
+        var initialPage = try await remoteDataSource.loadInitialCharacters()
+        try await localDataSource.saveCharacters(initialPage.data) // save initial fetch
+        
+        // Create the initial Paged instance with a closure to handle subsequent pages
+        try await self.fetchAndSavePage(page: &initialPage)
+        return initialPage
+    }
+
+    // Fetches a page by number from remote, saves it locally, and returns a new Paged instance
+    private func fetchAndSavePage(page: inout Paged<Character>) async throws {
+        try await page.fetchNextPage()
+        try await localDataSource.saveCharacters(page.data)
+    }
     
-    private func getRemoteCharacters() async throws -> [Character] {
-        if let currentPage {
-            try await currentPage.fetchNextPage()
-            let remoteData = await currentPage.data
-            
-        } else {
-            currentPage = try await remoteDataSource.loadInitialCharacters()
-            return try await localDataSource.fetchCharacters()
-        }
+    enum CharacterRepoError: Error {
+        case deallocatedSelf
     }
 }

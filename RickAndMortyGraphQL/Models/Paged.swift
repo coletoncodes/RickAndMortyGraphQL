@@ -16,7 +16,7 @@ actor Paged<DataModel> {
     private(set) var data: [DataModel]
     
     /// The page info for this object.
-    private var pageInfo: PageInfo
+    private(set) var pageInfo: PageInfo
     
     struct PageInfo {
         var currentPage: Int?

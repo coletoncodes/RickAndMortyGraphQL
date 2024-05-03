@@ -23,7 +23,8 @@ struct CharactersRootViewState: ViewState {
 class CharactersRootVM: ViewModel<CharactersRootViewState> {
     // MARK: - Dependencies
     // TODO: - Replace with interactor
-    @Injected(\.charactersRemoteDataSource) private var charactersRemoteDataSource
+//    @Injected(\.charactersRemoteDataSource) private var charactersRemoteDataSource
+    private let charactersRespository = CharactersRepository()
     private var currentPage: Paged<Character>?
     
     override func configureState() {
@@ -39,7 +40,7 @@ class CharactersRootVM: ViewModel<CharactersRootViewState> {
             self.state.isPerformingInitialLoad = true
             defer { self.state.isPerformingInitialLoad = false }
             do {
-                let pagedCharacters = try await charactersRemoteDataSource.loadInitialCharacters()
+                let pagedCharacters = try await charactersRespository.fetchCharacters()
                 currentPage = pagedCharacters
                 self.state.characters = await pagedCharacters.data
             } catch {

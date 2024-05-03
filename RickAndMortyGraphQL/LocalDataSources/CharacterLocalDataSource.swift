@@ -18,9 +18,10 @@ final class CharactersLocalRepo: CharactersLocalDataSource {
     @Injected(\.coreDataStack) private var coreDataStack
     
     func saveCharacters(_ characters: [Character]) async throws {
+        log("Saving characters", .debug, .persistence)
         let context = coreDataStack.newBackgroundContext()
         let existingCharacters = try await self.fetchExistingCharacters(in: context)
-        var existingIds = Set(existingCharacters.keys)
+        let existingIds = Set(existingCharacters.keys)
         var newIds = Set<String>()
         
         try await context.perform {
@@ -47,6 +48,7 @@ final class CharactersLocalRepo: CharactersLocalDataSource {
     }
     
     func fetchCharacters() async throws -> [Character] {
+        log("Fetching characters", .debug, .persistence)
         let context = coreDataStack.viewContext
         return try await context.perform {
             let request: NSFetchRequest<CharacterEntity> = CharacterEntity.fetchRequest()
@@ -56,20 +58,23 @@ final class CharactersLocalRepo: CharactersLocalDataSource {
     }
     
     private func deleteCharacter(byId id: String) async throws {
+        log("Deleting character with id: \(id)", .debug, .persistence)
         let context = coreDataStack.newBackgroundContext()
-        try await context.perform {
+        return try await context.perform {
             let request: NSFetchRequest<CharacterEntity> = CharacterEntity.fetchRequest()
             request.predicate = NSPredicate(format: "id == %@", id)
             let results = try context.fetch(request)
             if let entityToDelete = results.first {
                 context.delete(entityToDelete)
                 try context.save()
+                log("Deleted outdated character", .info, .persistence)
             }
         }
     }
     
     private func fetchExistingCharacters(in context: NSManagedObjectContext) async throws -> [String: CharacterEntity] {
-        try await context.perform {
+        log("Fetching existing characters", .debug, .persistence)
+        return try await context.perform {
             let request: NSFetchRequest<CharacterEntity> = CharacterEntity.fetchRequest()
             let entities = try context.fetch(request)
             return Dictionary<String, CharacterEntity>(
